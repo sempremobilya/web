@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+
+<html class="light" lang="tr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Manrope:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "inverse-on-surface": "#f3f0ef",
+                    "secondary-fixed": "#e5e2e1",
+                    "tertiary-fixed": "#e4e2e1",
+                    "tertiary-container": "#717171",
+                    "inverse-surface": "#313030",
+                    "outline-variant": "#e9bcb6",
+                    "on-background": "#1c1b1b",
+                    "on-error": "#ffffff",
+                    "surface": "#fcf9f8",
+                    "on-tertiary": "#ffffff",
+                    "surface-bright": "#fcf9f8",
+                    "secondary-fixed-dim": "#c8c6c5",
+                    "surface-container": "#f0edec",
+                    "secondary-container": "#e2dfde",
+                    "on-error-container": "#93000a",
+                    "error": "#ba1a1a",
+                    "outline": "#936e69",
+                    "on-primary": "#ffffff",
+                    "background": "#fcf9f8",
+                    "tertiary-fixed-dim": "#c8c6c6",
+                    "secondary": "#5f5e5e",
+                    "on-tertiary-fixed-variant": "#474747",
+                    "on-secondary-fixed-variant": "#474746",
+                    "primary-container": "#e30613",
+                    "surface-dim": "#dcd9d9",
+                    "on-primary-container": "#fff5f3",
+                    "on-surface": "#1c1b1b",
+                    "on-tertiary-container": "#f9f6f6",
+                    "on-primary-fixed": "#410001",
+                    "surface-variant": "#e5e2e1",
+                    "on-tertiary-fixed": "#1b1c1c",
+                    "surface-container-low": "#f6f3f2",
+                    "on-secondary-container": "#636262",
+                    "primary-fixed": "#ffdad5",
+                    "inverse-primary": "#ffb4aa",
+                    "surface-container-highest": "#e5e2e1",
+                    "on-secondary-fixed": "#1c1b1b",
+                    "error-container": "#ffdad6",
+                    "surface-container-lowest": "#ffffff",
+                    "primary-fixed-dim": "#ffb4aa",
+                    "on-secondary": "#ffffff",
+                    "surface-tint": "#c0000c",
+                    "tertiary": "#595958",
+                    "on-surface-variant": "#5e3f3b",
+                    "primary": "#b5000b",
+                    "surface-container-high": "#ebe7e7",
+                    "on-primary-fixed-variant": "#930007"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "fontFamily": {
+                    "headline": ["Plus Jakarta Sans"],
+                    "body": ["Manrope"],
+                    "label": ["Manrope"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            line-height: 1;
+            text-transform: none;
+            letter-spacing: normal;
+            word-wrap: normal;
+            white-space: nowrap;
+            direction: ltr;
+        }
+        .tonal-block-layering {
+            background-color: rgba(252, 249, 248, 0.8);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body selection:bg-primary-container selection:text-white">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 bg-white/80 dark:bg-stone-950/80 backdrop-blur-md shadow-sm dark:shadow-stone-900/20">
+<div class="flex justify-between items-center px-12 py-6 w-full max-w-screen-2xl mx-auto">
+<div class="text-2xl font-black tracking-tighter text-stone-900 dark:text-stone-50">Sempre Mobilya</div>
+<div class="hidden md:flex items-center gap-10">
+<a class="font-['Plus_Jakarta_Sans'] uppercase tracking-widest text-xs font-bold text-red-700 dark:text-red-500 border-b-2 border-red-700 pb-1" href="#">Çalışma İstasyonları</a>
+<a class="font-['Plus_Jakarta_Sans'] uppercase tracking-widest text-xs font-bold text-stone-600 dark:text-stone-400 hover:text-stone-900 dark:hover:text-stone-100 transition-colors" href="#">Ofis Koltukları</a>
+<a class="font-['Plus_Jakarta_Sans'] uppercase tracking-widest text-xs font-bold text-stone-600 dark:text-stone-400 hover:text-stone-900 dark:hover:text-stone-100 transition-colors" href="#">Yönetici Serisi</a>
+<a class="font-['Plus_Jakarta_Sans'] uppercase tracking-widest text-xs font-bold text-stone-600 dark:text-stone-400 hover:text-stone-900 dark:hover:text-stone-100 transition-colors" href="#">Toplantı Grupları</a>
+</div>
+<div class="flex items-center gap-6">
+<div class="hidden lg:flex items-center border-b border-outline/20 py-1">
+<span class="material-symbols-outlined text-stone-400 text-lg" data-icon="search">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-sm font-label ml-2 w-32" placeholder="Ürün Ara..." type="text"/>
+</div>
+<button class="bg-primary-container text-on-primary-container font-['Plus_Jakarta_Sans'] uppercase tracking-widest text-xs font-bold px-6 py-3 hover:opacity-80 transition-all duration-300 scale-95 active:scale-90">
+                    Teklif Al
+                </button>
+</div>
+</div>
+</nav>
+<main class="pt-24">
+<!-- Hero Section -->
+<section class="relative h-[921px] w-full flex items-center overflow-hidden bg-surface-container-high">
+<div class="absolute inset-0 z-0">
+<img class="w-full h-full object-cover grayscale-[0.2] brightness-75" data-alt="Modern high-end executive office with a minimalist large wooden desk, ergonomic chair, and floor-to-ceiling windows with city view in morning light" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD2beiU24A57omjH0tYZwLPqd8igywoNq96AygbkciiSRbc6VFchMPjyj4pW4yG0wJJAo5L1YAvWMhzU7VMkQfhLeRsjXgX2555hiQy9lw6I7Bkq3JPBIJ6reledj_0m8Cd8prti4oYMJmJ1Ob9NoIls2oKKMNlWKetC5oJ9aK6uNVJfzlf1abUbDtZpjtv4kdVhoFhlwDoFZ-Eg509GXHQqqDx6WJXCl6r4cgG7KVq3iGloFpEaz8S1STkvkfsR4TDhIUbYCExmg"/>
+</div>
+<div class="relative z-10 px-12 max-w-screen-2xl mx-auto w-full">
+<div class="max-w-4xl">
+<span class="bg-primary-container text-white text-[10px] uppercase font-bold tracking-[0.3em] px-3 py-1 mb-6 inline-block">2024 Premium Koleksiyonu</span>
+<h1 class="font-headline text-7xl md:text-8xl font-extrabold text-white leading-none tracking-tighter mb-8">
+                        Çalışma Alanlarında <span class="text-primary-container">Mükemmellik</span>
+</h1>
+<p class="text-white/90 text-xl font-body max-w-2xl mb-12 leading-relaxed">
+                        Tasarım ve mühendislik, performansa ilham veren ofis mobilyaları oluşturmak için birleşiyor. Profesyonel ortamların geleceğini deneyimleyin.
+                    </p>
+<div class="flex gap-4">
+<button class="bg-primary-container text-white px-10 py-5 font-headline font-bold text-sm tracking-widest uppercase hover:bg-primary transition-colors">
+                            Koleksiyonu Keşfet
+                        </button>
+<button class="bg-white/10 backdrop-blur-md border border-white/20 text-white px-10 py-5 font-headline font-bold text-sm tracking-widest uppercase hover:bg-white hover:text-stone-900 transition-all">
+                            Projelerimiz
+                        </button>
+</div>
+</div>
+</div>
+</section>
+<!-- Featured Categories: Bento Grid -->
+<section class="py-32 px-12 max-w-screen-2xl mx-auto">
+<div class="flex justify-between items-end mb-16">
+<div>
+<h2 class="font-headline text-5xl font-extrabold tracking-tighter text-on-surface">Kategoriler</h2>
+<p class="text-secondary mt-4 text-lg">Ofisinizin her köşesi için küratörlü çözümler.</p>
+</div>
+<a class="text-primary font-bold font-headline uppercase tracking-widest text-xs border-b-2 border-primary pb-1 hover:opacity-70 transition-opacity" href="#">Tümünü Gör</a>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-12 gap-8 h-[700px]">
+<!-- Workstations -->
+<div class="md:col-span-8 group relative overflow-hidden bg-surface-container-low">
+<img class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="Wide shot of multiple modern workstations with integrated cable management and sleek white surfaces in a collaborative office layout" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBUNFerHLHLSdsAzsAh3wlv8sUV9LQynKfo_IRAbuarB5jmJb07zeLcSkuYwjI1n9xMydCRL0kYscgxp3obehJ3wEPEWcNWqr84mvJyn2VzlB4dd8hhQ56r6pJyKsWOMYbyKVsQxo2it0d7T4XsOSHbp_2aQ0boyDL5AUOFViez32viF-RBvKiS4BzJrt5RiYFlNnxMnC9HvHPLvLPvRsmtp8I8xkJKfp5rtf8g35CUqmP8xxWPWXTBivERhqMa0bzKBL7nP2KAZw"/>
+<div class="absolute inset-0 bg-gradient-to-t from-stone-900/60 to-transparent"></div>
+<div class="absolute bottom-12 left-12">
+<h3 class="font-headline text-4xl font-bold text-white mb-2">Çalışma İstasyonları</h3>
+<p class="text-white/80 font-label tracking-wide uppercase text-sm">Verimlilik Odaklı Sistemler</p>
+</div>
+</div>
+<!-- Ergonomic Seating -->
+<div class="md:col-span-4 group relative overflow-hidden bg-surface-container-low">
+<img class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="Close up of a high-end ergonomic office chair with mesh back and adjustable armrests, studio lighting highlighting texture" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAmCXYFr6o589ocLUzozG5oEuAgDx-IUc57m0qzn8jrb9iKBPGDKw40xdPKjsY-jhNT7QFzDh7oiDwGLLayw62ofTkuLJMnbiSxNGqYa-a6DW067y0P6QDdcmGj87LPOritaKfoqzqAPl39PPZGFPH6ze8_rlWrI1OcarkO8QMSe3fvdybK4pDJSJkDeWVgjWVpPaPTSq9bmOgpzr9IYAoHjhlvU8PD82Dp6pCbJbM8v44WY13hl4356ZUtlR6zOwVUUpHQUqnmaw"/>
+<div class="absolute inset-0 bg-gradient-to-t from-stone-900/60 to-transparent"></div>
+<div class="absolute bottom-12 left-12">
+<h3 class="font-headline text-3xl font-bold text-white mb-2">Ofis Koltukları</h3>
+<p class="text-white/80 font-label tracking-wide uppercase text-sm">Ergonomik Ofis Koltuğu Çözümleri</p>
+</div>
+</div>
+<!-- Executive Desks -->
+<div class="md:col-span-4 group relative overflow-hidden bg-surface-container-low">
+<img class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="Luxury executive desk made of dark walnut wood with leather inlay and minimalist hardware in a professional setting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDKZuxliANSbNc6xo6bsN1U8LW0_xUPDIPjCM7543fRTFDlzAhTbPgAeTWNAJCkyTHn0t2_000ulff4SXGiEBEVRn99Bll1HMj8CVAoP3Mivw7PgH2yKzbolkAHxaLP7VjmrShKIIOpkKAoSE-71xOJxjz7WK8mZ8OeRYKxaOZw6r3eDAsTteTjHFzcL_QgYZv1ckuDsMphodaRWIR1cRTHXbfrisqBwYnzDtO4Jzikj8GjSwrKcLq9o3QbesDvXrXOBBJu4JJFlg"/>
+<div class="absolute inset-0 bg-gradient-to-t from-stone-900/60 to-transparent"></div>
+<div class="absolute bottom-12 left-12">
+<h3 class="font-headline text-3xl font-bold text-white mb-2">Yönetici Serisi</h3>
+<p class="text-white/80 font-label tracking-wide uppercase text-sm">Tasarım Ofis Masaları ve Prestij</p>
+</div>
+</div>
+<!-- Meeting Tables -->
+<div class="md:col-span-8 group relative overflow-hidden bg-surface-container-low">
+<img class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="Large contemporary conference table in a glass-walled meeting room with architecturally interesting lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD2HlQ7hD6LAVOBwxVMLpHk3a7FyIoPaulaM8wBWVlYsiKNghWigC30IjfrxYqhYX5jNTySwIUGpItUbUlg-ZkHrnv47y4clF9p38TOae4wdF0AAYkTpMdL57bSXgyVYIollTp_rt6NMBwYYWvWxuYTAowep3xfxHALXnLLCO6Q_ll05rVP8F5Wg5fgspzgre_VPhqawojPShakLx4Dqm1qGKojLpTlR-XE8XVDQ84OlSfBFTB1fWUk9BgvFrWlsnYMUUlzdPaW0g"/>
+<div class="absolute inset-0 bg-gradient-to-t from-stone-900/60 to-transparent"></div>
+<div class="absolute bottom-12 left-12">
+<h3 class="font-headline text-4xl font-bold text-white mb-2">Toplantı Grupları</h3>
+<p class="text-white/80 font-label tracking-wide uppercase text-sm">İşbirliği ve İnovasyon Alanları</p>
+</div>
+</div>
+</div>
+</section>
+<!-- The Art of the Office (Product Details) -->
+<section class="bg-surface-container py-32 overflow-hidden">
+<div class="max-w-screen-2xl mx-auto px-12 grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+<div class="relative">
+<div class="absolute -top-12 -left-12 text-[200px] font-black text-on-surface/[0.03] leading-none select-none uppercase">DETAY</div>
+<h2 class="font-headline text-6xl font-extrabold tracking-tighter mb-8 relative z-10">Ofis Tasarımının <br/><span class="text-primary">Sanatı</span></h2>
+<p class="text-lg text-secondary mb-12 leading-relaxed max-w-md">
+                        Mükemmellik detaylarda gizlidir. Her bir bileşen, dayanıklılık ve estetik için en üst düzey mühendislik ile tasarlanmıştır.
+                    </p>
+<div class="space-y-10">
+<div class="flex gap-6 items-start">
+<div class="w-12 h-12 flex-shrink-0 bg-white shadow-sm flex items-center justify-center">
+<span class="material-symbols-outlined text-primary" data-icon="settings_input_component">settings_input_component</span>
+</div>
+<div>
+<h4 class="font-headline font-bold text-xl mb-2">Senkronize Mekanizmalar</h4>
+<p class="text-secondary-fixed-dim text-sm font-body leading-relaxed">Vücut ağırlığına duyarlı, akıcı hareket kabiliyeti sağlayan patentli sistemler.</p>
+</div>
+</div>
+<div class="flex gap-6 items-start">
+<div class="w-12 h-12 flex-shrink-0 bg-white shadow-sm flex items-center justify-center">
+<span class="material-symbols-outlined text-primary" data-icon="texture">texture</span>
+</div>
+<div>
+<h4 class="font-headline font-bold text-xl mb-2">Birinci Sınıf Kumaşlar</h4>
+<p class="text-secondary-fixed-dim text-sm font-body leading-relaxed">Avrupa menşeli, yüksek sürtünme dayanımlı ve sürdürülebilir tekstil koleksiyonu.</p>
+</div>
+</div>
+<div class="flex gap-6 items-start">
+<div class="w-12 h-12 flex-shrink-0 bg-white shadow-sm flex items-center justify-center">
+<span class="material-symbols-outlined text-primary" data-icon="build">build</span>
+</div>
+<div>
+<h4 class="font-headline font-bold text-xl mb-2">Hassas Mühendislik</h4>
+<p class="text-secondary-fixed-dim text-sm font-body leading-relaxed">Özel döküm ayaklar ve sessiz hareket eden poliüretan tekerlek sistemleri.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="relative">
+<div class="bg-surface-container-lowest p-8 shadow-2xl relative z-10 aspect-square flex items-center justify-center">
+<img class="w-full h-full object-cover" data-alt="Extreme close up of mechanical components of an office chair, showing precision metal joints and brushed steel finish" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCqnEmCECgUtffmyCgBBCiTrZY6d3xKs7kAsPMGnSnQ1l0Rn_6Hds1UegXh9PsIv3EECM306s0gY2wb-0JlbJyzKim4wFrdO070wTs3K9cFeDl4kHEDbxXsoEXBhbh8iEJj4mBBsuEbofvuM9RL718tvSHke5YFy13P5Y6fym0K25fqZStUgmjJsgaplJ9ZxbJxpRMErUVUPjX-Jt2XxCgxrnUILFXOAbfd6jwh-zjysJqYZASv9EcJge4q6Bel6k5gGr9UmD6Emg"/>
+</div>
+<!-- Decorative overlapping element -->
+<div class="absolute -bottom-10 -right-10 w-2/3 aspect-video bg-primary-container z-20 flex items-center justify-center p-10">
+<p class="text-white font-headline font-bold text-2xl tracking-tight text-center">7/24 Profesyonel Kullanım İçin Tasarlandı</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Recent Projects -->
+<section class="py-32 px-12 max-w-screen-2xl mx-auto">
+<div class="text-center mb-20">
+<span class="text-primary font-bold tracking-[0.4em] uppercase text-xs mb-4 block">Vaka Analizleri</span>
+<h2 class="font-headline text-5xl font-extrabold tracking-tighter">Son Projelerimiz</h2>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+<!-- Project 1 -->
+<div class="group">
+<div class="overflow-hidden mb-6 aspect-[4/5] bg-stone-100">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 grayscale-[0.3] group-hover:grayscale-0" data-alt="Interior of a corporate tech headquarters featuring open plan workstations and breakout zones designed by Sempre Mobilya" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCGpQ8v7MykpzEY_PI9D5PzveJJG6hTMwgkmeAU_5TKsreIjDHcVPcQ_PkiVWoQy2W3jBkVnw5Pobb0NWlgNu6fXU3-8oLsHcmJcYU4Gu--ACA6ifW28DgglwiZG1YvH1WyDzEMHPZJ8zz4Q5SxaIihf09jFZle7gGupsGEUdRiwbxs6HJ2RS3ptW0wPQzdiD-xQ9zdLVgOMHxK2Aea3tNnh9m1bAsv1Em4RTEVKzkezPNB43CgL-dTTTNmUi7sJhsMQhQ2DgJzOA"/>
+</div>
+<div class="border-l-4 border-primary pl-6">
+<p class="text-xs font-bold text-primary uppercase tracking-widest mb-2">Teknoloji Merkezi / İstanbul</p>
+<h3 class="font-headline text-2xl font-bold mb-4">İnovasyon Üssü</h3>
+<p class="text-secondary text-sm line-clamp-2">500+ çalışan için esnek çalışma alanları ve akustik çözümlerle kurgulanan hibrit ofis projesi.</p>
+</div>
+</div>
+<!-- Project 2 -->
+<div class="group">
+<div class="overflow-hidden mb-6 aspect-[4/5] bg-stone-100">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 grayscale-[0.3] group-hover:grayscale-0" data-alt="Modern law firm office with dark wood executive suites and leather seating overlooking a skyline" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBi4HWn-OsH_JZ0s-7B_qKwJoqrleucv0nJ8gCMemvgrdC3w88b39j7yTRfgYQBmqDJAnF2XD4QS1igv0kASePaKPOsdYxRQZTrYAqSTps8nfCxfqfQWuT1jfk9OqZbvLbTzHjVp-BCHni0ONNAvSCoO98SbqMG-dYRdXz9fpWqNDuKhWkdxoPjoEwxRi4HmcyQdBBa1pGNLGIluF36Qq1P20-HAOW-zt4WUAHZb38aBVd5UWrq3U_7RBmhu8l3tHCUrhOsuEX3GQ"/>
+</div>
+<div class="border-l-4 border-primary pl-6">
+<p class="text-xs font-bold text-primary uppercase tracking-widest mb-2">Hukuk Merkezi / Ankara</p>
+<h3 class="font-headline text-2xl font-bold mb-4">Yönetici Süitleri</h3>
+<p class="text-secondary text-sm line-clamp-2">Klasik zarafeti modern detaylarla birleştiren butik yönetim katı mobilya uygulaması.</p>
+</div>
+</div>
+<!-- Project 3 -->
+<div class="group">
+<div class="overflow-hidden mb-6 aspect-[4/5] bg-stone-100">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 grayscale-[0.3] group-hover:grayscale-0" data-alt="Bright and airy co-working space with colorful ergonomic furniture and wooden accents" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAVzeRZiFbTp8kuVMy5VJNBwPn-xnP6LcWngtDZ9h2NFz0uy9mWSto0drjSEKO4akqvxFmOUehSVLEJ_hgWVIv1m2LkINoQLYXgusuLC-OxdNea6h2DBUK8t9aVLdEFOVjDNVh5CY0Te_WS9RspJ1nINxck_hX5-wX7EXl1R5ui7zgh3t79zxaukp8pcv86W0yrN7_GbI5FBhXIT5kL2BgyoLbfp3ZKJZara0zSnAAEV8GshN4nMXD_q47e1V8qlZAqkRW_ecQDnA"/>
+</div>
+<div class="border-l-4 border-primary pl-6">
+<p class="text-xs font-bold text-primary uppercase tracking-widest mb-2">Yaratıcı Stüdyo / İzmir</p>
+<h3 class="font-headline text-2xl font-bold mb-4">Stüdyo Nexum</h3>
+<p class="text-secondary text-sm line-clamp-2">İşbirliğini teşvik eden modüler masa sistemleri ve ergonomik task koltukları seçkisi.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Newsletter / CTA -->
+<section class="bg-primary px-12 py-24">
+<div class="max-w-screen-xl mx-auto flex flex-col md:flex-row justify-between items-center gap-12">
+<div class="text-white max-w-xl">
+<h2 class="font-headline text-4xl font-extrabold tracking-tighter mb-4 text-on-primary-container">Geleceğin ofislerini birlikte tasarlayalım.</h2>
+<p class="text-on-primary-container/80 text-lg">Katalog talebi veya mimari danışmanlık için ekibimizle iletişime geçin.</p>
+</div>
+<div class="flex gap-4 w-full md:w-auto">
+<input class="bg-white/10 border-white/20 text-white placeholder:text-white/40 focus:ring-primary-container focus:border-white px-6 py-4 w-full md:w-80" placeholder="E-posta adresiniz" type="email"/>
+<button class="bg-white text-primary font-headline font-bold uppercase tracking-widest text-xs px-10 py-4 hover:bg-on-primary-container transition-colors whitespace-nowrap">Gönder</button>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="w-full mt-20 bg-stone-50 dark:bg-stone-900 border-t border-stone-100 dark:border-stone-800">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-12 px-12 py-16 w-full max-w-screen-2xl mx-auto">
+<div class="space-y-6">
+<div class="text-xl font-bold text-stone-900 dark:text-stone-50">Sempre Mobilya</div>
+<p class="font-['Plus_Jakarta_Sans'] text-sm tracking-tight text-stone-500 dark:text-stone-400 leading-relaxed">
+                    Yenilikçi ofis mobilyaları ile çalışma alanlarını dönüştürüyoruz. Tasarım ve fonksiyonun mükemmel uyumu.
+                </p>
+<div class="flex gap-4">
+<span class="material-symbols-outlined text-stone-400 hover:text-red-600 cursor-pointer" data-icon="brand_awareness">brand_awareness</span>
+<span class="material-symbols-outlined text-stone-400 hover:text-red-600 cursor-pointer" data-icon="share">share</span>
+<span class="material-symbols-outlined text-stone-400 hover:text-red-600 cursor-pointer" data-icon="public">public</span>
+</div>
+</div>
+<div>
+<h5 class="font-headline font-bold text-xs uppercase tracking-widest mb-8 text-stone-900 dark:text-stone-50">Hızlı Bağlantılar</h5>
+<ul class="space-y-4">
+<li><a class="font-['Plus_Jakarta_Sans'] text-sm tracking-tight text-stone-500 dark:text-stone-400 hover:text-red-600 transition-colors hover:underline decoration-red-600 underline-offset-4" href="#">Hakkımızda</a></li>
+<li><a class="font-['Plus_Jakarta_Sans'] text-sm tracking-tight text-stone-500 dark:text-stone-400 hover:text-red-600 transition-colors hover:underline decoration-red-600 underline-offset-4" href="#">Sürdürülebilirlik</a></li>
+<li><a class="font-['Plus_Jakarta_Sans'] text-sm tracking-tight text-stone-500 dark:text-stone-400 hover:text-red-600 transition-colors hover:underline decoration-red-600 underline-offset-4" href="#">Teknik Dökümanlar</a></li>
+<li><a class="font-['Plus_Jakarta_Sans'] text-sm tracking-tight text-stone-500 dark:text-stone-400 hover:text-red-600 transition-colors hover:underline decoration-red-600 underline-offset-4" href="#">Garanti Koşulları</a></li>
+</ul>
+</div>
+<div>
+<h5 class="font-headline font-bold text-xs uppercase tracking-widest mb-8 text-stone-900 dark:text-stone-50">Destek</h5>
+<ul class="space-y-4">
+<li><a class="font-['Plus_Jakarta_Sans'] text-sm tracking-tight text-stone-500 dark:text-stone-400 hover:text-red-600 transition-colors hover:underline decoration-red-600 underline-offset-4" href="#">Kariyer</a></li>
+<li><a class="font-['Plus_Jakarta_Sans'] text-sm tracking-tight text-stone-500 dark:text-stone-400 hover:text-red-600 transition-colors hover:underline decoration-red-600 underline-offset-4" href="#">Gizlilik Politikası</a></li>
+<li><a class="font-['Plus_Jakarta_Sans'] text-sm tracking-tight text-stone-500 dark:text-stone-400 hover:text-red-600 transition-colors hover:underline decoration-red-600 underline-offset-4" href="#">Satış Ağı</a></li>
+<li><a class="font-['Plus_Jakarta_Sans'] text-sm tracking-tight text-stone-500 dark:text-stone-400 hover:text-red-600 transition-colors hover:underline decoration-red-600 underline-offset-4" href="#">İletişim</a></li>
+</ul>
+</div>
+<div>
+<h5 class="font-headline font-bold text-xs uppercase tracking-widest mb-8 text-stone-900 dark:text-stone-50">Genel Merkez</h5>
+<p class="font-['Plus_Jakarta_Sans'] text-sm tracking-tight text-stone-500 dark:text-stone-400 leading-relaxed">
+                    Levent, Büyükdere Cd. No:199<br/>
+                    34394 Şişli/İstanbul<br/><br/>
+                    T: +90 212 123 45 67<br/>
+                    E: info@sempremobilya.com
+                </p>
+</div>
+</div>
+<div class="px-12 py-8 border-t border-stone-200 dark:border-stone-800 flex justify-between items-center max-w-screen-2xl mx-auto">
+<span class="font-['Plus_Jakarta_Sans'] text-sm tracking-tight text-stone-500 dark:text-stone-400">© 2024 Sempre Mobilya. Tüm Hakları Saklıdır.</span>
+<div class="flex gap-8">
+<span class="font-['Plus_Jakarta_Sans'] text-sm tracking-tight text-stone-500 dark:text-stone-400 cursor-pointer hover:text-red-700 transition-colors">TR</span>
+<span class="font-['Plus_Jakarta_Sans'] text-sm tracking-tight text-stone-500 dark:text-stone-400 cursor-pointer hover:text-red-700 transition-colors">EN</span>
+</div>
+</div>
+</footer>
+</body></html>
