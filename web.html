@@ -1,0 +1,1615 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Archi-Curator | Premium Ofis Mobilyaları</title>
+<meta name="description" content="Türkiye'nin lider ofis mobilyaları markası. Ergonomik ofis koltuğu, ofis masası, toplantı masası ve daha fazlası. 19+ yıllık deneyim, 2 yıl garanti.">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --red: #d20a11;
+    --red-dark: #a8080e;
+    --red-light: #f5e6e7;
+    --black: #0a0a0a;
+    --white: #FFFFFF;
+    --gray-100: #f8f8f8;
+    --gray-200: #efefef;
+    --gray-300: #e0e0e0;
+    --gray-500: #888;
+    --gray-700: #444;
+    --font-display: 'Cormorant Garamond', serif;
+    --font-body: 'Montserrat', sans-serif;
+    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --shadow-sm: 0 2px 12px rgba(0,0,0,0.06);
+    --shadow-md: 0 8px 32px rgba(0,0,0,0.10);
+    --shadow-lg: 0 20px 60px rgba(0,0,0,0.14);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { font-family: var(--font-body); color: var(--black); background: var(--white); overflow-x: hidden; }
+
+  /* NAV */
+  .navbar {
+    position: fixed; top: 0; width: 100%; z-index: 1000;
+    background: rgba(255,255,255,0.96); backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--gray-200);
+    transition: var(--transition);
+  }
+  .navbar.scrolled { box-shadow: var(--shadow-md); }
+  .nav-inner {
+    max-width: 1320px; margin: 0 auto;
+    display: grid; grid-template-columns: 1fr auto 1fr;
+    align-items: center; padding: 0 32px; height: 72px;
+  }
+  .nav-left { display: flex; gap: 4px; align-items: center; }
+  .nav-logo {
+    font-family: var(--font-display); font-size: 22px; font-weight: 700;
+    letter-spacing: 0.04em; color: var(--black); text-decoration: none;
+    white-space: nowrap;
+  }
+  .nav-logo span { color: var(--red); }
+  .nav-right { display: flex; gap: 12px; align-items: center; justify-content: flex-end; }
+  .nav-links { display: flex; gap: 0; align-items: center; list-style: none; }
+  .nav-links > li { position: relative; }
+  .nav-links > li > a {
+    display: flex; align-items: center; gap: 4px;
+    padding: 8px 14px; font-size: 13px; font-weight: 500;
+    letter-spacing: 0.04em; text-transform: uppercase;
+    color: var(--black); text-decoration: none;
+    transition: color 0.2s;
+  }
+  .nav-links > li > a:hover { color: var(--red); }
+  .nav-links > li > a svg { width: 10px; height: 10px; transition: transform 0.2s; }
+  .nav-links > li:hover > a svg { transform: rotate(180deg); }
+
+  /* MEGA MENU */
+  .mega-menu {
+    display: none; position: absolute; top: 100%; left: -120px;
+    min-width: 560px; background: var(--white);
+    border: 1px solid var(--gray-200); border-top: 3px solid var(--red);
+    box-shadow: var(--shadow-lg); padding: 28px 32px; gap: 32px;
+    grid-template-columns: repeat(3, 1fr); z-index: 200;
+  }
+  .nav-links > li:hover .mega-menu { display: grid; }
+  .mega-col h4 {
+    font-size: 10px; font-weight: 700; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--red); margin-bottom: 14px;
+    padding-bottom: 8px; border-bottom: 1px solid var(--gray-200);
+  }
+  .mega-col a {
+    display: block; padding: 5px 0; font-size: 13px; font-weight: 400;
+    color: var(--gray-700); text-decoration: none; transition: color 0.2s;
+  }
+  .mega-col a:hover { color: var(--red); padding-left: 4px; }
+
+  .search-box {
+    display: flex; align-items: center; gap: 8px;
+    border: 1px solid var(--gray-300); border-radius: 4px;
+    padding: 0 12px; height: 38px; background: var(--gray-100);
+    transition: var(--transition);
+  }
+  .search-box:focus-within { border-color: var(--red); background: white; }
+  .search-box input {
+    border: none; background: none; outline: none; font-size: 13px;
+    font-family: var(--font-body); width: 160px; color: var(--black);
+  }
+  .search-box input::placeholder { color: var(--gray-500); }
+  .search-box svg { color: var(--gray-500); flex-shrink: 0; }
+
+  .btn-primary {
+    background: var(--red); color: white; border: none; cursor: pointer;
+    padding: 0 20px; height: 38px; font-size: 12px; font-weight: 600;
+    letter-spacing: 0.08em; text-transform: uppercase; font-family: var(--font-body);
+    text-decoration: none; display: inline-flex; align-items: center; gap: 6px;
+    transition: var(--transition); border-radius: 2px;
+  }
+  .btn-primary:hover { background: var(--red-dark); transform: translateY(-1px); }
+  .btn-outline {
+    border: 1.5px solid var(--black); color: var(--black); background: transparent;
+    cursor: pointer; padding: 0 20px; height: 40px; font-size: 12px; font-weight: 600;
+    letter-spacing: 0.08em; text-transform: uppercase; font-family: var(--font-body);
+    text-decoration: none; display: inline-flex; align-items: center; gap: 6px;
+    transition: var(--transition); border-radius: 2px;
+  }
+  .btn-outline:hover { background: var(--black); color: white; }
+
+  /* PAGES */
+  .page { display: none; }
+  .page.active { display: block; }
+
+  /* ============ HOME PAGE ============ */
+
+  /* HERO */
+  .hero {
+    margin-top: 72px; position: relative; height: 92vh; min-height: 640px;
+    overflow: hidden; display: flex; align-items: center;
+  }
+  .hero-bg {
+    position: absolute; inset: 0;
+    background: linear-gradient(105deg, #0a0a0a 0%, #1a0a0b 45%, #2a0508 100%);
+  }
+  .hero-bg-img {
+    position: absolute; inset: 0; opacity: 0.28;
+    background: url('https://images.unsplash.com/photo-1497366216548-37526070297c?w=1600&q=80') center/cover;
+  }
+  .hero-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(90deg, rgba(10,10,10,0.9) 0%, rgba(10,10,10,0.4) 60%, transparent 100%);
+  }
+  .hero-content {
+    position: relative; z-index: 2; max-width: 1320px; margin: 0 auto;
+    padding: 0 32px; width: 100%;
+  }
+  .hero-tag {
+    display: inline-block; background: var(--red); color: white;
+    font-size: 10px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase;
+    padding: 5px 14px; margin-bottom: 24px;
+    animation: fadeInUp 0.8s ease both;
+  }
+  .hero h1 {
+    font-family: var(--font-display); font-size: clamp(52px, 7vw, 96px);
+    font-weight: 300; line-height: 1.0; color: white; margin-bottom: 8px;
+    animation: fadeInUp 0.9s 0.1s ease both;
+  }
+  .hero h1 strong {
+    display: block; font-weight: 700; color: var(--red);
+  }
+  .hero p {
+    font-size: 15px; font-weight: 400; color: rgba(255,255,255,0.65);
+    max-width: 420px; line-height: 1.7; margin-bottom: 36px;
+    animation: fadeInUp 1s 0.2s ease both;
+  }
+  .hero-btns { display: flex; gap: 14px; animation: fadeInUp 1s 0.3s ease both; }
+  .hero-scroll {
+    position: absolute; bottom: 32px; left: 50%; transform: translateX(-50%);
+    display: flex; flex-direction: column; align-items: center; gap: 6px;
+    color: rgba(255,255,255,0.4); font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase;
+    animation: bounce 2s infinite;
+  }
+  .hero-scroll-line { width: 1px; height: 48px; background: rgba(255,255,255,0.2); }
+
+  @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+  @keyframes bounce { 0%,100% { transform: translateX(-50%) translateY(0); } 50% { transform: translateX(-50%) translateY(8px); } }
+
+  /* USP STRIP */
+  .usp-strip { background: var(--black); padding: 32px 0; }
+  .usp-inner { max-width: 1320px; margin: 0 auto; padding: 0 32px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; }
+  .usp-item {
+    display: flex; align-items: center; gap: 18px; padding: 0 32px;
+    border-right: 1px solid rgba(255,255,255,0.1);
+  }
+  .usp-item:first-child { padding-left: 0; }
+  .usp-item:last-child { border-right: none; }
+  .usp-icon {
+    width: 44px; height: 44px; background: var(--red); display: flex;
+    align-items: center; justify-content: center; flex-shrink: 0; border-radius: 2px;
+  }
+  .usp-icon svg { width: 22px; height: 22px; color: white; }
+  .usp-text h4 { font-size: 13px; font-weight: 600; color: white; margin-bottom: 3px; }
+  .usp-text p { font-size: 12px; color: rgba(255,255,255,0.5); line-height: 1.5; }
+
+  /* CATEGORIES */
+  .section { padding: 96px 0; }
+  .section-sm { padding: 64px 0; }
+  .container { max-width: 1320px; margin: 0 auto; padding: 0 32px; }
+  .section-header { display: flex; align-items: flex-end; justify-content: space-between; margin-bottom: 48px; }
+  .section-label { font-size: 10px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--red); margin-bottom: 10px; }
+  .section-title { font-family: var(--font-display); font-size: clamp(32px, 4vw, 52px); font-weight: 400; line-height: 1.1; }
+  .section-title strong { font-weight: 700; }
+  .link-red { color: var(--red); font-size: 12px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none; display: flex; align-items: center; gap: 6px; transition: gap 0.2s; }
+  .link-red:hover { gap: 10px; }
+
+  .cat-grid { display: grid; grid-template-columns: 1.4fr 1fr; gap: 3px; }
+  .cat-row { display: flex; flex-direction: column; gap: 3px; }
+  .cat-card {
+    position: relative; overflow: hidden; cursor: pointer;
+    aspect-ratio: 1/0.65;
+  }
+  .cat-card.tall { aspect-ratio: 1/1.4; }
+  .cat-card img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease; display: block; }
+  .cat-card:hover img { transform: scale(1.06); }
+  .cat-card-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(0deg, rgba(0,0,0,0.7) 0%, transparent 60%);
+    transition: var(--transition);
+  }
+  .cat-card:hover .cat-card-overlay { background: linear-gradient(0deg, rgba(210,10,17,0.8) 0%, rgba(0,0,0,0.2) 100%); }
+  .cat-card-info { position: absolute; bottom: 0; left: 0; right: 0; padding: 24px; }
+  .cat-card-info h3 { font-size: 18px; font-weight: 600; color: white; margin-bottom: 4px; }
+  .cat-card-info span { font-size: 11px; color: rgba(255,255,255,0.6); letter-spacing: 0.08em; }
+  .cat-card-arrow {
+    position: absolute; top: 20px; right: 20px;
+    width: 36px; height: 36px; background: white; display: flex;
+    align-items: center; justify-content: center; border-radius: 50%;
+    opacity: 0; transform: scale(0.8); transition: var(--transition);
+  }
+  .cat-card:hover .cat-card-arrow { opacity: 1; transform: scale(1); }
+  .cat-card-arrow svg { width: 14px; height: 14px; color: var(--red); }
+
+  /* STATS */
+  .stats-section { background: var(--black); padding: 96px 0; overflow: hidden; position: relative; }
+  .stats-bg-text {
+    position: absolute; bottom: -40px; left: -20px;
+    font-family: var(--font-display); font-size: 280px; font-weight: 700;
+    color: rgba(255,255,255,0.02); line-height: 1; pointer-events: none; user-select: none;
+  }
+  .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; position: relative; z-index: 1; }
+  .stat-item {
+    padding: 0 48px 0 0; border-right: 1px solid rgba(255,255,255,0.1);
+    opacity: 0; transform: translateY(20px); transition: opacity 0.6s, transform 0.6s;
+  }
+  .stat-item.visible { opacity: 1; transform: translateY(0); }
+  .stat-item:first-child { padding-left: 0; }
+  .stat-item:last-child { border-right: none; }
+  .stat-num {
+    font-family: var(--font-display); font-size: 72px; font-weight: 700;
+    color: white; line-height: 1; margin-bottom: 4px;
+  }
+  .stat-num span { color: var(--red); }
+  .stat-label { font-size: 13px; font-weight: 500; color: rgba(255,255,255,0.6); margin-bottom: 12px; line-height: 1.5; }
+  .stat-desc { font-size: 12px; color: rgba(255,255,255,0.35); line-height: 1.6; }
+
+  /* BRANDS */
+  .brands-section { padding: 72px 0; background: var(--gray-100); overflow: hidden; }
+  .brands-label { text-align: center; font-size: 10px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gray-500); margin-bottom: 36px; }
+  .brands-track-wrapper { overflow: hidden; }
+  .brands-track {
+    display: flex; gap: 56px; align-items: center; width: max-content;
+    animation: scroll 20s linear infinite;
+  }
+  @keyframes scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+  .brand-logo {
+    font-family: var(--font-body); font-size: 16px; font-weight: 700;
+    letter-spacing: 0.12em; color: var(--gray-300); text-transform: uppercase;
+    white-space: nowrap; transition: color 0.3s;
+  }
+  .brand-logo:hover { color: var(--black); }
+
+  /* SEO CONTENT */
+  .seo-section { padding: 96px 0; background: white; }
+  .seo-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+  .seo-img-wrap { position: relative; }
+  .seo-img {
+    width: 100%; aspect-ratio: 4/5; object-fit: cover;
+    display: block;
+  }
+  .seo-img-accent {
+    position: absolute; bottom: -20px; right: -20px; width: 180px; height: 120px;
+    background: var(--red); display: flex; flex-direction: column;
+    align-items: center; justify-content: center; text-align: center; padding: 20px;
+  }
+  .seo-img-accent big { font-family: var(--font-display); font-size: 40px; font-weight: 700; color: white; display: block; }
+  .seo-img-accent small { font-size: 10px; letter-spacing: 0.1em; color: rgba(255,255,255,0.7); text-transform: uppercase; }
+  .seo-content > * + * { margin-top: 20px; }
+  .seo-content h2 { font-family: var(--font-display); font-size: 44px; font-weight: 400; line-height: 1.1; }
+  .seo-content h2 strong { font-weight: 700; display: block; }
+  .seo-content p { font-size: 14px; color: var(--gray-700); line-height: 1.8; }
+  .seo-checkmarks { display: flex; flex-direction: column; gap: 12px; margin-top: 24px !important; }
+  .check-item { display: flex; gap: 12px; align-items: flex-start; }
+  .check-icon { width: 20px; height: 20px; background: var(--red); display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 1px; }
+  .check-icon svg { width: 11px; height: 11px; color: white; }
+  .check-item span { font-size: 13px; color: var(--gray-700); line-height: 1.5; }
+
+  /* FOOTER */
+  footer { background: var(--black); color: white; padding: 80px 0 0; }
+  .footer-grid { display: grid; grid-template-columns: 1.5fr repeat(3, 1fr); gap: 48px; margin-bottom: 56px; }
+  .footer-brand p { font-size: 13px; color: rgba(255,255,255,0.45); line-height: 1.7; margin: 16px 0 24px; max-width: 280px; }
+  .footer-social { display: flex; gap: 10px; }
+  .social-btn {
+    width: 36px; height: 36px; border: 1px solid rgba(255,255,255,0.2);
+    display: flex; align-items: center; justify-content: center; cursor: pointer;
+    transition: var(--transition); text-decoration: none; color: rgba(255,255,255,0.5);
+  }
+  .social-btn:hover { border-color: var(--red); background: var(--red); color: white; }
+  .footer-col h5 { font-size: 10px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.4); margin-bottom: 20px; }
+  .footer-col a { display: block; font-size: 13px; color: rgba(255,255,255,0.6); text-decoration: none; margin-bottom: 10px; transition: color 0.2s; }
+  .footer-col a:hover { color: white; }
+  .footer-contact-item { display: flex; gap: 10px; margin-bottom: 12px; font-size: 13px; color: rgba(255,255,255,0.5); }
+  .footer-bottom { border-top: 1px solid rgba(255,255,255,0.08); padding: 24px 0; display: flex; justify-content: space-between; align-items: center; }
+  .footer-bottom p { font-size: 12px; color: rgba(255,255,255,0.25); }
+
+  /* ============ CATEGORY PAGE ============ */
+  .page-header { margin-top: 72px; padding: 64px 0 48px; background: var(--black); }
+  .page-header .breadcrumb { display: flex; gap: 8px; align-items: center; margin-bottom: 20px; }
+  .page-header .breadcrumb a { font-size: 12px; color: rgba(255,255,255,0.4); text-decoration: none; }
+  .page-header .breadcrumb span { color: rgba(255,255,255,0.2); font-size: 11px; }
+  .page-header .breadcrumb strong { font-size: 12px; color: rgba(255,255,255,0.7); }
+  .page-header h1 { font-family: var(--font-display); font-size: clamp(36px, 5vw, 64px); font-weight: 300; color: white; margin-bottom: 8px; }
+  .page-header h1 span { color: var(--red); font-weight: 700; }
+  .page-header p { font-size: 14px; color: rgba(255,255,255,0.45); max-width: 540px; }
+
+  .cat-page-layout { display: grid; grid-template-columns: 280px 1fr; gap: 40px; padding: 56px 0; }
+
+  /* SIDEBAR */
+  .sidebar {}
+  .filter-block { margin-bottom: 36px; }
+  .filter-block-head { display: flex; justify-content: space-between; align-items: center; padding-bottom: 14px; border-bottom: 1px solid var(--gray-200); margin-bottom: 18px; cursor: pointer; }
+  .filter-block-head h4 { font-size: 12px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; }
+  .filter-block-head svg { width: 14px; height: 14px; color: var(--gray-500); transition: transform 0.2s; }
+  .filter-check { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; cursor: pointer; }
+  .filter-check input[type="checkbox"] { accent-color: var(--red); width: 15px; height: 15px; cursor: pointer; }
+  .filter-check label { font-size: 13px; color: var(--gray-700); cursor: pointer; flex: 1; }
+  .filter-check .count { font-size: 11px; color: var(--gray-500); }
+  .price-inputs { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .price-input { padding: 8px 12px; border: 1px solid var(--gray-300); font-size: 13px; font-family: var(--font-body); outline: none; border-radius: 2px; }
+  .price-input:focus { border-color: var(--red); }
+  .color-filters { display: flex; gap: 8px; flex-wrap: wrap; }
+  .color-dot { width: 28px; height: 28px; border-radius: 50%; cursor: pointer; border: 2px solid transparent; transition: border-color 0.2s; position: relative; }
+  .color-dot.active, .color-dot:hover { border-color: var(--black); }
+  .filter-apply { width: 100%; padding: 12px; background: var(--red); color: white; border: none; cursor: pointer; font-size: 12px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; font-family: var(--font-body); margin-top: 8px; transition: background 0.2s; }
+  .filter-apply:hover { background: var(--red-dark); }
+
+  /* PRODUCT GRID */
+  .products-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 28px; }
+  .products-count { font-size: 13px; color: var(--gray-500); }
+  .products-count strong { color: var(--black); font-weight: 600; }
+  .sort-select { padding: 8px 32px 8px 14px; border: 1px solid var(--gray-300); font-size: 13px; font-family: var(--font-body); outline: none; appearance: none; background: white url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%23888'/%3E%3C/svg%3E") no-repeat right 12px center/8px; cursor: pointer; border-radius: 2px; }
+  .prod-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  .prod-card { background: var(--white); border: 1px solid var(--gray-200); position: relative; overflow: hidden; cursor: pointer; transition: var(--transition); }
+  .prod-card:hover { box-shadow: var(--shadow-md); transform: translateY(-3px); }
+  .prod-card-img { aspect-ratio: 1/1; overflow: hidden; background: var(--gray-100); position: relative; }
+  .prod-card-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; display: block; }
+  .prod-card:hover .prod-card-img img { transform: scale(1.07); }
+  .prod-badge { position: absolute; top: 14px; left: 14px; padding: 4px 10px; font-size: 10px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; }
+  .badge-new { background: var(--black); color: white; }
+  .badge-sale { background: var(--red); color: white; }
+  .badge-bestseller { background: #f59e0b; color: white; }
+  .prod-card-quick {
+    position: absolute; bottom: -40px; left: 0; right: 0;
+    background: rgba(0,0,0,0.85); color: white; text-align: center;
+    padding: 12px; font-size: 12px; font-weight: 600; letter-spacing: 0.06em;
+    transition: bottom 0.3s; cursor: pointer;
+  }
+  .prod-card:hover .prod-card-quick { bottom: 0; }
+  .prod-card-body { padding: 18px; }
+  .prod-brand { font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gray-500); margin-bottom: 5px; }
+  .prod-name { font-size: 14px; font-weight: 500; color: var(--black); margin-bottom: 10px; line-height: 1.4; }
+  .prod-price { font-size: 18px; font-weight: 700; color: var(--red); font-family: var(--font-display); }
+  .prod-price-old { font-size: 13px; color: var(--gray-500); text-decoration: line-through; margin-left: 8px; font-family: var(--font-body); font-weight: 400; }
+  .prod-rating { display: flex; gap: 3px; margin-top: 8px; align-items: center; }
+  .star { color: #f59e0b; font-size: 12px; }
+  .rating-count { font-size: 11px; color: var(--gray-500); margin-left: 4px; }
+
+  /* ============ PRODUCT PAGE ============ */
+  .prod-page { padding: 56px 0; }
+  .prod-layout { display: grid; grid-template-columns: 1.1fr 1fr; gap: 64px; }
+  .prod-gallery { position: sticky; top: 90px; }
+  .main-img-wrap { position: relative; overflow: hidden; background: var(--gray-100); aspect-ratio: 1/1; margin-bottom: 12px; }
+  .main-img-wrap img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .img-zoom-badge {
+    position: absolute; bottom: 14px; right: 14px;
+    background: rgba(0,0,0,0.7); color: white; padding: 6px 12px; font-size: 11px; letter-spacing: 0.06em; display: flex; align-items: center; gap: 6px;
+  }
+  .thumbs { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; }
+  .thumb { aspect-ratio: 1/1; overflow: hidden; border: 2px solid transparent; cursor: pointer; transition: border-color 0.2s; }
+  .thumb.active { border-color: var(--red); }
+  .thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+  .prod-info > * + * { margin-top: 20px; }
+  .prod-breadcrumb { display: flex; gap: 6px; font-size: 12px; color: var(--gray-500); }
+  .prod-breadcrumb a { color: var(--gray-500); text-decoration: none; }
+  .prod-breadcrumb a:hover { color: var(--red); }
+  .prod-header-brand { font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--red); font-weight: 600; }
+  .prod-title { font-family: var(--font-display); font-size: 42px; font-weight: 600; line-height: 1.1; }
+  .prod-meta { display: flex; gap: 20px; align-items: center; }
+  .prod-sku { font-size: 12px; color: var(--gray-500); }
+  .stock-badge { font-size: 11px; font-weight: 700; padding: 4px 10px; letter-spacing: 0.06em; }
+  .stock-badge.instock { background: #d1fae5; color: #065f46; }
+  .stock-badge.lowstock { background: #fef3c7; color: #92400e; }
+  .prod-pricing { display: flex; align-items: baseline; gap: 12px; }
+  .prod-price-main { font-family: var(--font-display); font-size: 48px; font-weight: 700; color: var(--red); }
+  .prod-price-orig { font-size: 20px; color: var(--gray-500); text-decoration: line-through; }
+  .prod-discount { background: var(--red); color: white; padding: 4px 10px; font-size: 12px; font-weight: 700; }
+  .divider { height: 1px; background: var(--gray-200); margin: 4px 0 !important; }
+  .config-label { font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 10px; display: block; }
+  .color-swatches { display: flex; gap: 8px; }
+  .color-swatch { width: 32px; height: 32px; border-radius: 50%; cursor: pointer; border: 3px solid transparent; transition: border-color 0.2s; }
+  .color-swatch.active { border-color: var(--black); }
+  .size-options { display: flex; gap: 8px; flex-wrap: wrap; }
+  .size-btn { padding: 8px 18px; border: 1.5px solid var(--gray-300); font-size: 13px; font-weight: 500; cursor: pointer; font-family: var(--font-body); background: white; transition: var(--transition); }
+  .size-btn.active, .size-btn:hover { border-color: var(--red); color: var(--red); }
+  .qty-row { display: flex; gap: 12px; align-items: center; }
+  .qty-control { display: flex; border: 1.5px solid var(--gray-300); }
+  .qty-btn { width: 40px; height: 48px; border: none; background: white; font-size: 18px; cursor: pointer; font-weight: 300; transition: background 0.2s; }
+  .qty-btn:hover { background: var(--gray-100); }
+  .qty-input { width: 52px; height: 48px; border: none; border-left: 1.5px solid var(--gray-300); border-right: 1.5px solid var(--gray-300); text-align: center; font-size: 15px; font-family: var(--font-body); font-weight: 500; outline: none; }
+  .add-cart-btn { flex: 1; background: var(--red); color: white; border: none; height: 48px; font-size: 13px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; font-family: var(--font-body); cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; transition: var(--transition); }
+  .add-cart-btn:hover { background: var(--red-dark); }
+  .btn-3d {
+    width: 100%; padding: 16px; border: 2px dashed var(--gray-300); background: var(--gray-100); cursor: pointer;
+    font-size: 13px; font-weight: 600; font-family: var(--font-body);
+    display: flex; align-items: center; justify-content: center; gap: 10px;
+    letter-spacing: 0.06em; transition: var(--transition); color: var(--black);
+  }
+  .btn-3d:hover { border-color: var(--red); color: var(--red); background: var(--red-light); }
+  .btn-3d-icon { width: 24px; height: 24px; background: var(--black); display: flex; align-items: center; justify-content: center; transition: background 0.2s; }
+  .btn-3d:hover .btn-3d-icon { background: var(--red); }
+  .btn-3d-icon svg { width: 14px; height: 14px; color: white; }
+  .trust-items { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+  .trust-item { border: 1px solid var(--gray-200); padding: 14px 12px; text-align: center; }
+  .trust-item svg { width: 20px; height: 20px; color: var(--red); margin-bottom: 6px; }
+  .trust-item p { font-size: 11px; color: var(--gray-700); line-height: 1.4; font-weight: 500; }
+
+  /* TABS */
+  .prod-tabs { margin-top: 72px; }
+  .tab-nav { display: flex; border-bottom: 2px solid var(--gray-200); margin-bottom: 36px; }
+  .tab-btn { padding: 14px 24px; font-size: 13px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; border: none; background: none; cursor: pointer; font-family: var(--font-body); color: var(--gray-500); border-bottom: 2px solid transparent; margin-bottom: -2px; transition: all 0.2s; }
+  .tab-btn.active { color: var(--red); border-bottom-color: var(--red); }
+  .tab-content { display: none; }
+  .tab-content.active { display: block; }
+  .spec-table { width: 100%; border-collapse: collapse; }
+  .spec-table tr:nth-child(even) { background: var(--gray-100); }
+  .spec-table td { padding: 12px 16px; font-size: 13px; border-bottom: 1px solid var(--gray-200); }
+  .spec-table td:first-child { font-weight: 600; color: var(--black); width: 220px; }
+  .spec-table td:last-child { color: var(--gray-700); }
+  .review-item { padding: 24px 0; border-bottom: 1px solid var(--gray-200); }
+  .review-header { display: flex; justify-content: space-between; margin-bottom: 10px; }
+  .reviewer { font-size: 14px; font-weight: 600; }
+  .review-date { font-size: 12px; color: var(--gray-500); }
+  .review-text { font-size: 13px; color: var(--gray-700); line-height: 1.7; }
+
+  /* ============ ABOUT PAGE ============ */
+  .about-hero { margin-top: 72px; background: var(--black); padding: 100px 0; position: relative; overflow: hidden; }
+  .about-hero-bg { position: absolute; inset: 0; opacity: 0.2; background: url('https://images.unsplash.com/photo-1497366216548-37526070297c?w=1400&q=80') center/cover; }
+  .about-hero h1 { font-family: var(--font-display); font-size: clamp(48px, 7vw, 88px); font-weight: 300; color: white; position: relative; }
+  .about-hero h1 strong { font-weight: 700; color: var(--red); display: block; }
+  .about-story { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; padding: 96px 0; }
+  .about-story img { width: 100%; aspect-ratio: 4/5; object-fit: cover; display: block; }
+  .about-story-content > * + * { margin-top: 20px; }
+  .about-story-content h2 { font-family: var(--font-display); font-size: 48px; font-weight: 400; }
+  .about-story-content h2 strong { font-weight: 700; display: block; }
+  .about-story-content p { font-size: 14px; color: var(--gray-700); line-height: 1.8; }
+  .about-values { background: var(--gray-100); padding: 96px 0; }
+  .values-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; margin-top: 56px; }
+  .value-card { background: white; padding: 48px 36px; }
+  .value-num { font-family: var(--font-display); font-size: 56px; font-weight: 700; color: var(--red); opacity: 0.3; line-height: 1; margin-bottom: 16px; }
+  .value-card h3 { font-size: 18px; font-weight: 600; margin-bottom: 12px; }
+  .value-card p { font-size: 13px; color: var(--gray-700); line-height: 1.7; }
+  .team-section { padding: 96px 0; }
+  .team-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; margin-top: 56px; }
+  .team-card { text-align: center; }
+  .team-img { aspect-ratio: 3/4; overflow: hidden; margin-bottom: 16px; background: var(--gray-100); }
+  .team-img img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.5s; }
+  .team-card:hover .team-img img { transform: scale(1.05); }
+  .team-card h4 { font-size: 15px; font-weight: 600; margin-bottom: 4px; }
+  .team-card span { font-size: 12px; color: var(--red); letter-spacing: 0.06em; text-transform: uppercase; font-weight: 600; }
+
+  /* ============ CONTACT/STORES PAGE ============ */
+  .stores-page { margin-top: 72px; }
+  .stores-hero { background: var(--black); padding: 72px 0 56px; }
+  .stores-hero h1 { font-family: var(--font-display); font-size: clamp(40px, 5vw, 64px); font-weight: 300; color: white; }
+  .stores-hero h1 strong { color: var(--red); }
+  .stores-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 0; }
+  .store-card { padding: 56px 48px; border-bottom: 2px solid var(--gray-200); }
+  .store-card:nth-child(odd) { border-right: 2px solid var(--gray-200); }
+  .store-num { font-family: var(--font-display); font-size: 80px; font-weight: 700; color: var(--red); opacity: 0.15; line-height: 1; margin-bottom: -20px; }
+  .store-card h2 { font-family: var(--font-display); font-size: 32px; font-weight: 600; margin-bottom: 8px; }
+  .store-district { font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--red); margin-bottom: 24px; }
+  .store-info { display: flex; flex-direction: column; gap: 12px; margin-bottom: 28px; }
+  .store-info-row { display: flex; gap: 12px; align-items: flex-start; font-size: 13px; color: var(--gray-700); }
+  .store-info-row svg { width: 16px; height: 16px; color: var(--red); flex-shrink: 0; margin-top: 2px; }
+  .store-hours { background: var(--gray-100); padding: 20px; margin-bottom: 24px; }
+  .store-hours h5 { font-size: 10px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gray-500); margin-bottom: 12px; }
+  .store-hours-row { display: flex; justify-content: space-between; font-size: 13px; padding: 4px 0; border-bottom: 1px solid var(--gray-200); }
+  .store-hours-row:last-child { border-bottom: none; }
+  .map-placeholder { height: 280px; background: var(--gray-200); display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; }
+  .map-placeholder-text { text-align: center; color: var(--gray-500); font-size: 13px; }
+  .stores-map-full { height: 480px; background: linear-gradient(135deg, #e8e0d0, #d4ccbc); display: flex; align-items: center; justify-content: center; }
+  .stores-cta { background: var(--red); padding: 64px 0; text-align: center; }
+  .stores-cta h2 { font-family: var(--font-display); font-size: 40px; font-weight: 700; color: white; margin-bottom: 12px; }
+  .stores-cta p { font-size: 15px; color: rgba(255,255,255,0.7); margin-bottom: 28px; }
+  .contact-form-section { padding: 96px 0; }
+  .contact-grid { display: grid; grid-template-columns: 1fr 1.5fr; gap: 80px; }
+  .form-group { margin-bottom: 20px; }
+  .form-label { display: block; font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gray-700); margin-bottom: 8px; }
+  .form-input { width: 100%; padding: 12px 16px; border: 1.5px solid var(--gray-300); font-size: 14px; font-family: var(--font-body); outline: none; transition: border-color 0.2s; border-radius: 2px; }
+  .form-input:focus { border-color: var(--red); }
+  .form-textarea { resize: vertical; min-height: 140px; }
+  .form-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+
+  /* NAV active page */
+  .nav-links .current > a { color: var(--red); }
+
+  /* Animated counter */
+  .counter { transition: all 0.1s; }
+
+  /* Responsive adjustments for mockup */
+  @media (max-width: 900px) {
+    .nav-inner { grid-template-columns: auto 1fr; }
+    .cat-grid { grid-template-columns: 1fr; }
+    .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 32px; }
+    .footer-grid { grid-template-columns: 1fr 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar" id="navbar">
+  <div class="nav-inner">
+    <ul class="nav-links nav-left">
+      <li class="current">
+        <a href="#" onclick="showPage('home')">
+          Ofis Mobilyaları
+          <svg viewBox="0 0 10 6" fill="currentColor"><path d="M0 0l5 6 5-6z"/></svg>
+        </a>
+        <div class="mega-menu">
+          <div class="mega-col">
+            <h4>Masa Takımları</h4>
+            <a href="#">Yönetici Masa Takımı</a>
+            <a href="#">L-Köşe Masa Takımı</a>
+            <a href="#">Modüler Masa Sistemi</a>
+            <a href="#">Toplantı Masa Takımı</a>
+            <a href="#">Resepsiyon Masası</a>
+          </div>
+          <div class="mega-col">
+            <h4>Depolama</h4>
+            <a href="#">Dosya Dolapları</a>
+            <a href="#">Kitaplıklar</a>
+            <a href="#">Açık Raf Sistemleri</a>
+            <a href="#">Kapalı Dolaplar</a>
+          </div>
+          <div class="mega-col">
+            <h4>Aksesuarlar</h4>
+            <a href="#">Masa Bölücüler</a>
+            <a href="#">Kablo Yönetimi</a>
+            <a href="#">Masa Aydınlatma</a>
+            <a href="#">Ergonomik Aksesuarlar</a>
+          </div>
+        </div>
+      </li>
+      <li>
+        <a href="#" onclick="showPage('category')">
+          Ofis Koltukları
+          <svg viewBox="0 0 10 6" fill="currentColor"><path d="M0 0l5 6 5-6z"/></svg>
+        </a>
+        <div class="mega-menu">
+          <div class="mega-col">
+            <h4>Yönetici Koltukları</h4>
+            <a href="#">Deri Yönetici Koltuğu</a>
+            <a href="#">Kumaş Yönetici Koltuğu</a>
+            <a href="#">Yüksek Arkalıklı Koltuk</a>
+            <a href="#">Nurus Serisi</a>
+          </div>
+          <div class="mega-col">
+            <h4>Çalışan Koltukları</h4>
+            <a href="#">Ergonomik Ofis Koltuğu</a>
+            <a href="#">Mesh Sırtlık Koltuk</a>
+            <a href="#">Operatör Koltuğu</a>
+            <a href="#">Ayarlanabilir Koltuk</a>
+          </div>
+          <div class="mega-col">
+            <h4>Misafir & Lounge</h4>
+            <a href="#">Misafir Koltuğu</a>
+            <a href="#">Bekleme Koltuğu</a>
+            <a href="#">Lounge Sandalye</a>
+            <a href="#">Toplantı Sandalyesi</a>
+          </div>
+        </div>
+      </li>
+      <li><a href="#" onclick="showPage('home')">Blog</a></li>
+    </ul>
+
+    <a href="#" onclick="showPage('home')" class="nav-logo">ARCHI-<span>CURATOR</span></a>
+
+    <div class="nav-right">
+      <a href="#" onclick="showPage('about')" style="font-size:13px;font-weight:500;text-decoration:none;color:var(--black);letter-spacing:0.04em;text-transform:uppercase;font-size:12px;">Hakkımızda</a>
+      <a href="#" onclick="showPage('stores')" style="font-size:13px;font-weight:500;text-decoration:none;color:var(--black);letter-spacing:0.04em;text-transform:uppercase;font-size:12px;">Mağazalarımız</a>
+      <div class="search-box">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+        <input type="text" placeholder="Ürün ara...">
+      </div>
+      <a href="#" class="btn-primary">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+        Online Mağaza
+      </a>
+    </div>
+  </div>
+</nav>
+
+<!-- ======= HOME PAGE ======= -->
+<div id="page-home" class="page active">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-bg-img"></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <div class="hero-tag">Premium Ofis Mobilyaları</div>
+      <h1>Ofisinizi Sanata<strong>Dönüştürün.</strong></h1>
+      <p>Kurumsal kimliğinizi yansıtan, ergonomik ve estetik buluşturan mimari ofis çözümleriyle çalışma alanınızı yeniden keşfedin.</p>
+      <div class="hero-btns">
+        <a href="#" onclick="showPage('category')" class="btn-primary" style="height:48px;padding:0 28px;font-size:13px;">
+          Koleksiyonu Keşfet
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+        <a href="#" class="btn-outline" style="color:white;border-color:rgba(255,255,255,0.4);height:48px;padding:0 28px;font-size:13px;">Proje Talebi</a>
+      </div>
+    </div>
+    <div class="hero-scroll">
+      <div class="hero-scroll-line"></div>
+      Keşfet
+    </div>
+  </section>
+
+  <!-- USP STRIP -->
+  <div class="usp-strip">
+    <div class="usp-inner">
+      <div class="usp-item">
+        <div class="usp-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+        </div>
+        <div class="usp-text">
+          <h4>Hızlı Teslimat</h4>
+          <p>İstanbul içi 48 saat, Türkiye genelinde hızlı ve güvenli teslimat</p>
+        </div>
+      </div>
+      <div class="usp-item">
+        <div class="usp-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <div class="usp-text">
+          <h4>2 Yıl Garanti</h4>
+          <p>Tüm ürünlerimizde kesintisiz 2 yıl Archi-Curator güvencesi</p>
+        </div>
+      </div>
+      <div class="usp-item">
+        <div class="usp-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+        </div>
+        <div class="usp-text">
+          <h4>Uzman Montaj</h4>
+          <p>Deneyimli ekibimiz ile kusursuz ve mekan uyumlu profesyonel montaj</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- POPULAR CATEGORIES -->
+  <section class="section" style="background: var(--gray-100);">
+    <div class="container">
+      <div class="section-header">
+        <div>
+          <div class="section-label">Koleksiyonumuz</div>
+          <h2 class="section-title">Popüler<strong>Kategoriler</strong></h2>
+        </div>
+        <a href="#" onclick="showPage('category')" class="link-red">
+          Tümünü İncele
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+      <div class="cat-grid">
+        <div class="cat-card tall" onclick="showPage('category')">
+          <img src="https://images.unsplash.com/photo-1519125323398-675f0ddb6308?w=800&q=80" alt="Ergonomik Ofis Koltukları - Yönetici Koltuğu">
+          <div class="cat-card-overlay"></div>
+          <div class="cat-card-info">
+            <h3>Ofis Koltukları</h3>
+            <span>142 Ürün</span>
+          </div>
+          <div class="cat-card-arrow">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </div>
+        </div>
+        <div class="cat-row">
+          <div class="cat-card" onclick="showPage('category')">
+            <img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=800&q=80" alt="Ofis Masası - Çalışma Masası">
+            <div class="cat-card-overlay"></div>
+            <div class="cat-card-info">
+              <h3>Masalar</h3>
+              <span>89 Ürün</span>
+            </div>
+            <div class="cat-card-arrow">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </div>
+          </div>
+          <div class="cat-card" onclick="showPage('category')">
+            <img src="https://images.unsplash.com/photo-1524758631624-e2822e304c36?w=800&q=80" alt="Ofis Dolabı - Depolama Çözümleri">
+            <div class="cat-card-overlay"></div>
+            <div class="cat-card-info">
+              <h3>Depolama & Dolaplar</h3>
+              <span>64 Ürün</span>
+            </div>
+            <div class="cat-card-arrow">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Extra cats row -->
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:3px;margin-top:3px;">
+        <div class="cat-card" onclick="showPage('category')" style="aspect-ratio:4/3;">
+          <img src="https://images.unsplash.com/photo-1600508774634-4e11d34730e2?w=600&q=80" alt="Toplantı Masası">
+          <div class="cat-card-overlay"></div>
+          <div class="cat-card-info"><h3 style="font-size:15px;">Toplantı Masaları</h3></div>
+          <div class="cat-card-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+        </div>
+        <div class="cat-card" onclick="showPage('category')" style="aspect-ratio:4/3;">
+          <img src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?w=600&q=80" alt="Resepsiyon Masası">
+          <div class="cat-card-overlay"></div>
+          <div class="cat-card-info"><h3 style="font-size:15px;">Resepsiyon</h3></div>
+          <div class="cat-card-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+        </div>
+        <div class="cat-card" onclick="showPage('category')" style="aspect-ratio:4/3;">
+          <img src="https://images.unsplash.com/photo-1521737711867-e3b97375f902?w=600&q=80" alt="Açık Ofis Sistemleri">
+          <div class="cat-card-overlay"></div>
+          <div class="cat-card-info"><h3 style="font-size:15px;">Açık Ofis</h3></div>
+          <div class="cat-card-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+        </div>
+        <div class="cat-card" onclick="showPage('category')" style="aspect-ratio:4/3;">
+          <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=600&q=80" alt="Lounge & Bekleme Alanı">
+          <div class="cat-card-overlay"></div>
+          <div class="cat-card-info"><h3 style="font-size:15px;">Lounge & Bekleme</h3></div>
+          <div class="cat-card-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATS -->
+  <section class="stats-section" id="stats">
+    <div class="stats-bg-text">19+</div>
+    <div class="container">
+      <div class="stats-grid">
+        <div class="stat-item">
+          <div class="stat-num"><span class="counter" data-target="19">0</span><span>+</span></div>
+          <div class="stat-label">Yıllık Deneyim</div>
+          <div class="stat-desc">3000'den fazla kurumsal ofis projesine imza attık</div>
+        </div>
+        <div class="stat-item" style="transition-delay:0.15s">
+          <div class="stat-num"><span class="counter" data-target="2">0</span></div>
+          <div class="stat-label">Yıl Garanti Güvencesi</div>
+          <div class="stat-desc">Satış sonrası hizmetimizle daima yanınızdayız</div>
+        </div>
+        <div class="stat-item" style="transition-delay:0.3s">
+          <div class="stat-num"><span class="counter" data-target="2">0</span></div>
+          <div class="stat-label">Mağaza — Masko & Çağlayan</div>
+          <div class="stat-desc">İstanbul'un iki stratejik noktasında showroom deneyimi</div>
+        </div>
+        <div class="stat-item" style="transition-delay:0.45s">
+          <div class="stat-num"><span>#</span><span class="counter" data-target="1">0</span></div>
+          <div class="stat-label">Nurus Yetkili Bayi</div>
+          <div class="stat-desc">Türkiye'nin en prestijli markasının yetkilendirilmiş satıcısı</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BRANDS -->
+  <div class="brands-section">
+    <div class="container">
+      <div class="brands-label">Güven Duyan Markalar</div>
+    </div>
+    <div class="brands-track-wrapper">
+      <div class="brands-track">
+        <span class="brand-logo">Coca-Cola</span>
+        <span class="brand-logo">Siemens</span>
+        <span class="brand-logo">Turkcell</span>
+        <span class="brand-logo">Nestlé</span>
+        <span class="brand-logo">Garanti BBVA</span>
+        <span class="brand-logo">Unilever</span>
+        <span class="brand-logo">Sabancı</span>
+        <span class="brand-logo">Koç Holding</span>
+        <span class="brand-logo">Akbank</span>
+        <span class="brand-logo">Yapı Kredi</span>
+        <!-- Duplicate for infinite scroll -->
+        <span class="brand-logo">Coca-Cola</span>
+        <span class="brand-logo">Siemens</span>
+        <span class="brand-logo">Turkcell</span>
+        <span class="brand-logo">Nestlé</span>
+        <span class="brand-logo">Garanti BBVA</span>
+        <span class="brand-logo">Unilever</span>
+        <span class="brand-logo">Sabancı</span>
+        <span class="brand-logo">Koç Holding</span>
+        <span class="brand-logo">Akbank</span>
+        <span class="brand-logo">Yapı Kredi</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- SEO SECTION -->
+  <section class="seo-section">
+    <div class="container">
+      <div class="seo-grid">
+        <div class="seo-img-wrap">
+          <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&q=80" alt="Ergonomik Ofis Tasarımı - Modern Çalışma Ortamı" class="seo-img">
+          <div class="seo-img-accent">
+            <big>19+</big>
+            <small>Yıllık Sektör Deneyimi</small>
+          </div>
+        </div>
+        <div class="seo-content">
+          <div class="section-label">Neden Archi-Curator?</div>
+          <h2>Yenilikçi Ofis Trendleri &<strong>Ergonomik Tasarım</strong></h2>
+          <p>Günümüz iş dünyasında ofis tasarımı artık sadece estetik bir tercih değil, çalışan verimliliğini doğrudan etkileyen bir stratejik unsurdur. <strong>Ergonomik ofis mobilyaları</strong> — yönetici koltuğundan çalışma masasına, dosya dolabından toplantı masasına kadar her detay — çalışanların performansını ve konforu artırır.</p>
+          <p>Archi-Curator olarak biz, <strong>Nurus yetkili bayi</strong> sıfatıyla Türkiye'nin en prestijli ofis mobilya markasının kalitesini doğrudan size sunuyoruz. Minimalist yaklaşımımız ve akustik çalışma ortamı çözümlerimizle sürdürülebilir ofis deneyimi yaratıyoruz.</p>
+          <div class="seo-checkmarks">
+            <div class="check-item">
+              <div class="check-icon"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="2,6 5,9 10,3"/></svg></div>
+              <span>Akustik panel sistemleri ve sessiz çalışma alanları ile odaklanmayı artırın</span>
+            </div>
+            <div class="check-item">
+              <div class="check-icon"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="2,6 5,9 10,3"/></svg></div>
+              <span>Sürdürülebilir malzeme kullanımı ve eko-tasarım anlayışıyla çevreci ofis kurun</span>
+            </div>
+            <div class="check-item">
+              <div class="check-icon"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="2,6 5,9 10,3"/></svg></div>
+              <span>Height-adjustable standing desk seçenekleriyle aktif çalışma düzeni oluşturun</span>
+            </div>
+            <div class="check-item">
+              <div class="check-icon"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="2,6 5,9 10,3"/></svg></div>
+              <span>Kurumsal kimliğinize özel renk ve malzeme seçenekleriyle özelleştirme imkânı</span>
+            </div>
+          </div>
+          <div style="margin-top:32px!important;">
+            <a href="#" onclick="showPage('about')" class="btn-primary" style="height:48px;padding:0 28px;font-size:13px;">Hakkımızda Daha Fazla</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- QUOTE SECTION -->
+  <section style="background:var(--red);padding:80px 0;text-align:center;">
+    <div class="container">
+      <p style="font-family:var(--font-display);font-size:clamp(28px,4vw,52px);font-weight:300;color:white;line-height:1.2;max-width:800px;margin:0 auto;">"Geleceğin çalışma alanını <strong style="font-weight:700;">bugün kurun.</strong>"</p>
+      <div style="width:60px;height:2px;background:rgba(255,255,255,0.4);margin:28px auto 28px;"></div>
+      <a href="#" onclick="showPage('stores')" style="font-size:12px;letter-spacing:0.15em;text-transform:uppercase;color:rgba(255,255,255,0.8);text-decoration:none;border-bottom:1px solid rgba(255,255,255,0.4);padding-bottom:3px;">Mağazalarımızı Ziyaret Edin →</a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="nav-logo" style="font-size:20px;">ARCHI-<span style="color:var(--red)">CURATOR</span></div>
+          <p>Mekanı dönüştüren, çalışma alanlarını profesyonel bir sanat eserine dönüştüren ofis mobilyaları çözümleri.</p>
+          <div class="footer-social">
+            <a class="social-btn" href="#"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+            <a class="social-btn" href="#"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg></a>
+            <a class="social-btn" href="#"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h5>Kurumsal</h5>
+          <a href="#" onclick="showPage('about')">Hakkımızda</a>
+          <a href="#" onclick="showPage('stores')">Mağazalarımız</a>
+          <a href="#">Referanslar</a>
+          <a href="#">Kariyer</a>
+          <a href="#">Basın</a>
+        </div>
+        <div class="footer-col">
+          <h5>Müşteri İlişkileri</h5>
+          <a href="#">Teslimat ve İade</a>
+          <a href="#">Sıkça Sorulan Sorular</a>
+          <a href="#">KVKK</a>
+          <a href="#">Garanti Koşulları</a>
+          <a href="#">İletişim</a>
+        </div>
+        <div class="footer-col">
+          <h5>İletişim</h5>
+          <div class="footer-contact-item"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Masko Ofis Mobilya Kenti, No: 42, İstanbul</div>
+          <div class="footer-contact-item"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>+90 212 440 0 440</div>
+          <div class="footer-contact-item"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>info@archicurator.com</div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2024 Archi-Curator. Tüm Hakları Saklıdır.</p>
+        <p>Ofis Mobilyaları | Ergonomik Koltuk | Ofis Masası | Toplantı Masası | İstanbul</p>
+      </div>
+    </div>
+  </footer>
+
+</div><!-- /home -->
+
+<!-- ======= CATEGORY PAGE ======= -->
+<div id="page-category" class="page">
+  <div class="page-header">
+    <div class="container">
+      <div class="breadcrumb">
+        <a href="#" onclick="showPage('home')">Ana Sayfa</a>
+        <span>›</span>
+        <strong>Ofis Koltukları</strong>
+      </div>
+      <h1>Ofis <span>Koltukları</span></h1>
+      <p>Ergonomik tasarım, üstün konfor ve dayanıklı malzeme. Vücudunuzu destekleyen, üretkenliğinizi artıran premium ofis koltukları.</p>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="cat-page-layout">
+
+      <!-- SIDEBAR -->
+      <aside class="sidebar">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:24px;">
+          <h3 style="font-size:14px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;">Filtreler</h3>
+          <button style="background:none;border:none;color:var(--red);font-size:12px;cursor:pointer;font-family:var(--font-body);">Temizle</button>
+        </div>
+
+        <div class="filter-block">
+          <div class="filter-block-head">
+            <h4>Kategori</h4>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+          </div>
+          <div class="filter-check"><input type="checkbox" checked id="c1"><label for="c1">Yönetici Koltuğu</label><span class="count">(48)</span></div>
+          <div class="filter-check"><input type="checkbox" id="c2"><label for="c2">Çalışan Koltuğu</label><span class="count">(62)</span></div>
+          <div class="filter-check"><input type="checkbox" id="c3"><label for="c3">Toplantı Sandalyesi</label><span class="count">(24)</span></div>
+          <div class="filter-check"><input type="checkbox" id="c4"><label for="c4">Misafir Koltuğu</label><span class="count">(18)</span></div>
+          <div class="filter-check"><input type="checkbox" id="c5"><label for="c5">Lounge Sandalye</label><span class="count">(12)</span></div>
+        </div>
+
+        <div class="filter-block">
+          <div class="filter-block-head">
+            <h4>Marka</h4>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+          </div>
+          <div class="filter-check"><input type="checkbox" checked id="b1"><label for="b1">Nurus</label><span class="count">(85)</span></div>
+          <div class="filter-check"><input type="checkbox" id="b2"><label for="b2">Interstuhl</label><span class="count">(32)</span></div>
+          <div class="filter-check"><input type="checkbox" id="b3"><label for="b3">Wilkhahn</label><span class="count">[18]</span></div>
+          <div class="filter-check"><input type="checkbox" id="b4"><label for="b4">Boss Design</label><span class="count">(14)</span></div>
+        </div>
+
+        <div class="filter-block">
+          <div class="filter-block-head">
+            <h4>Fiyat Aralığı</h4>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+          </div>
+          <div class="price-inputs">
+            <input type="text" class="price-input" placeholder="Min ₺">
+            <input type="text" class="price-input" placeholder="Max ₺">
+          </div>
+        </div>
+
+        <div class="filter-block">
+          <div class="filter-block-head">
+            <h4>Renk</h4>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+          </div>
+          <div class="color-filters">
+            <div class="color-dot active" style="background:#1a1a1a;" title="Siyah"></div>
+            <div class="color-dot" style="background:#6b3838;" title="Bordo"></div>
+            <div class="color-dot" style="background:#4a5568;" title="Gri"></div>
+            <div class="color-dot" style="background:#c8a97e;" title="Krem"></div>
+            <div class="color-dot" style="background:#2d4a3e;" title="Yeşil"></div>
+            <div class="color-dot" style="background:#2c3e6b;" title="Lacivert"></div>
+          </div>
+        </div>
+
+        <div class="filter-block">
+          <div class="filter-block-head">
+            <h4>Özellikler</h4>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+          </div>
+          <div class="filter-check"><input type="checkbox" id="f1"><label for="f1">Yükseklik Ayarlı</label></div>
+          <div class="filter-check"><input type="checkbox" id="f2"><label for="f2">Lomber Destek</label></div>
+          <div class="filter-check"><input type="checkbox" id="f3"><label for="f3">Kol Dayama</label></div>
+          <div class="filter-check"><input type="checkbox" id="f4"><label for="f4">Döner Mekanizma</label></div>
+          <div class="filter-check"><input type="checkbox" id="f5"><label for="f5">Eğilme Fonksiyonu</label></div>
+        </div>
+
+        <button class="filter-apply">Filtrele</button>
+      </aside>
+
+      <!-- PRODUCT GRID -->
+      <div>
+        <div class="products-top">
+          <p class="products-count"><strong>142</strong> ürün listelendi</p>
+          <div style="display:flex;gap:12px;align-items:center;">
+            <select class="sort-select">
+              <option>Önerilen Sıralama</option>
+              <option>En Düşük Fiyat</option>
+              <option>En Yüksek Fiyat</option>
+              <option>En Çok Satan</option>
+              <option>En Yeni</option>
+            </select>
+            <div style="display:flex;gap:4px;">
+              <button style="width:36px;height:36px;border:1px solid var(--gray-300);background:var(--black);cursor:pointer;display:flex;align-items:center;justify-content:center;" title="Grid görünüm">
+                <svg width="14" height="14" viewBox="0 0 16 16" fill="white"><rect x="1" y="1" width="6" height="6"/><rect x="9" y="1" width="6" height="6"/><rect x="1" y="9" width="6" height="6"/><rect x="9" y="9" width="6" height="6"/></svg>
+              </button>
+              <button style="width:36px;height:36px;border:1px solid var(--gray-300);background:white;cursor:pointer;display:flex;align-items:center;justify-content:center;" title="Liste görünüm">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="prod-grid">
+          <!-- Product cards -->
+          <div class="prod-card" onclick="showPage('product')">
+            <div class="prod-card-img">
+              <span class="prod-badge badge-bestseller">Çok Satan</span>
+              <img src="https://images.unsplash.com/photo-1541781774459-bb2af2f05b55?w=500&q=80" alt="Nurus Ezone Ergonomik Yönetici Koltuğu">
+              <div class="prod-card-quick">Hızlı İncele</div>
+            </div>
+            <div class="prod-card-body">
+              <p class="prod-brand">Nurus</p>
+              <h3 class="prod-name">Ezone Ergonomik Yönetici Koltuğu</h3>
+              <div><span class="prod-price">₺28.500</span><span class="prod-price-old">₺34.200</span></div>
+              <div class="prod-rating"><span class="star">★★★★★</span><span class="rating-count">(47)</span></div>
+            </div>
+          </div>
+          <div class="prod-card" onclick="showPage('product')">
+            <div class="prod-card-img">
+              <span class="prod-badge badge-new">Yeni</span>
+              <img src="https://images.unsplash.com/photo-1598300042247-d088f8ab3a91?w=500&q=80" alt="Nurus Mera Mesh Sandalye">
+              <div class="prod-card-quick">Hızlı İncele</div>
+            </div>
+            <div class="prod-card-body">
+              <p class="prod-brand">Nurus</p>
+              <h3 class="prod-name">Mera Mesh Yönetici Koltuğu</h3>
+              <div><span class="prod-price">₺22.800</span></div>
+              <div class="prod-rating"><span class="star">★★★★☆</span><span class="rating-count">(23)</span></div>
+            </div>
+          </div>
+          <div class="prod-card" onclick="showPage('product')">
+            <div class="prod-card-img">
+              <span class="prod-badge badge-sale">%20 İndirim</span>
+              <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=500&q=80" alt="Ergonomik Çalışan Koltuğu">
+              <div class="prod-card-quick">Hızlı İncele</div>
+            </div>
+            <div class="prod-card-body">
+              <p class="prod-brand">Interstuhl</p>
+              <h3 class="prod-name">Every 152E Ergonomik Çalışan Koltuğu</h3>
+              <div><span class="prod-price">₺16.400</span><span class="prod-price-old">₺20.500</span></div>
+              <div class="prod-rating"><span class="star">★★★★★</span><span class="rating-count">(89)</span></div>
+            </div>
+          </div>
+          <div class="prod-card" onclick="showPage('product')">
+            <div class="prod-card-img">
+              <img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=500&q=80" alt="Lounge Berjer Koltuk">
+              <div class="prod-card-quick">Hızlı İncele</div>
+            </div>
+            <div class="prod-card-body">
+              <p class="prod-brand">Boss Design</p>
+              <h3 class="prod-name">Cass Lounge Berjer Koltuğu</h3>
+              <div><span class="prod-price">₺42.000</span></div>
+              <div class="prod-rating"><span class="star">★★★★★</span><span class="rating-count">(12)</span></div>
+            </div>
+          </div>
+          <div class="prod-card" onclick="showPage('product')">
+            <div class="prod-card-img">
+              <span class="prod-badge badge-bestseller">Çok Satan</span>
+              <img src="https://images.unsplash.com/photo-1506439773649-6e0eb8cfb237?w=500&q=80" alt="Toplantı Sandalyesi">
+              <div class="prod-card-quick">Hızlı İncele</div>
+            </div>
+            <div class="prod-card-body">
+              <p class="prod-brand">Nurus</p>
+              <h3 class="prod-name">Rio Toplantı & Konferans Sandalyesi</h3>
+              <div><span class="prod-price">₺8.900</span></div>
+              <div class="prod-rating"><span class="star">★★★★☆</span><span class="rating-count">(156)</span></div>
+            </div>
+          </div>
+          <div class="prod-card" onclick="showPage('product')">
+            <div class="prod-card-img">
+              <span class="prod-badge badge-new">Yeni</span>
+              <img src="https://images.unsplash.com/photo-1524758631624-e2822e304c36?w=500&q=80" alt="Yönetici Ofis Koltuk">
+              <div class="prod-card-quick">Hızlı İncele</div>
+            </div>
+            <div class="prod-card-body">
+              <p class="prod-brand">Wilkhahn</p>
+              <h3 class="prod-name">ON 162 Yüksek Arkalıklı Ofis Koltuğu</h3>
+              <div><span class="prod-price">₺54.600</span></div>
+              <div class="prod-rating"><span class="star">★★★★★</span><span class="rating-count">(8)</span></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- PAGINATION -->
+        <div style="display:flex;justify-content:center;gap:6px;margin-top:48px;">
+          <button style="width:40px;height:40px;border:1.5px solid var(--black);background:var(--black);color:white;cursor:pointer;font-family:var(--font-body);font-weight:600;">1</button>
+          <button style="width:40px;height:40px;border:1.5px solid var(--gray-300);background:white;cursor:pointer;font-family:var(--font-body);">2</button>
+          <button style="width:40px;height:40px;border:1.5px solid var(--gray-300);background:white;cursor:pointer;font-family:var(--font-body);">3</button>
+          <span style="width:40px;height:40px;display:flex;align-items:center;justify-content:center;color:var(--gray-500);">...</span>
+          <button style="width:40px;height:40px;border:1.5px solid var(--gray-300);background:white;cursor:pointer;font-family:var(--font-body);">12</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer same -->
+  <footer style="background:var(--black);color:white;padding:48px 0 0;margin-top:64px;">
+    <div class="container" style="text-align:center;padding-bottom:32px;">
+      <div class="nav-logo" style="font-size:20px;display:inline-block;margin-bottom:16px;">ARCHI-<span style="color:var(--red)">CURATOR</span></div>
+      <p style="color:rgba(255,255,255,0.3);font-size:12px;">© 2024 Archi-Curator. Ofis Mobilyaları | Ergonomik Koltuk | Ofis Masası | İstanbul</p>
+    </div>
+  </footer>
+</div>
+
+<!-- ======= PRODUCT PAGE ======= -->
+<div id="page-product" class="page">
+  <div style="margin-top:72px;">
+    <div class="container prod-page">
+      <div class="prod-layout">
+        <!-- GALLERY -->
+        <div class="prod-gallery">
+          <div class="main-img-wrap">
+            <img src="https://images.unsplash.com/photo-1541781774459-bb2af2f05b55?w=800&q=80" alt="Nurus Ezone Ergonomik Yönetici Koltuğu - Ana Görsel" id="mainImg">
+            <div class="img-zoom-badge">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
+              Yakınlaştır
+            </div>
+          </div>
+          <div class="thumbs">
+            <div class="thumb active"><img src="https://images.unsplash.com/photo-1541781774459-bb2af2f05b55?w=200&q=80" alt="Görsel 1"></div>
+            <div class="thumb"><img src="https://images.unsplash.com/photo-1598300042247-d088f8ab3a91?w=200&q=80" alt="Görsel 2"></div>
+            <div class="thumb"><img src="https://images.unsplash.com/photo-1519125323398-675f0ddb6308?w=200&q=80" alt="Görsel 3"></div>
+            <div class="thumb"><img src="https://images.unsplash.com/photo-1506439773649-6e0eb8cfb237?w=200&q=80" alt="Görsel 4"></div>
+          </div>
+        </div>
+
+        <!-- PRODUCT INFO -->
+        <div class="prod-info">
+          <div class="prod-breadcrumb">
+            <a href="#" onclick="showPage('home')">Ana Sayfa</a> ›
+            <a href="#" onclick="showPage('category')">Ofis Koltukları</a> ›
+            <span style="color:var(--black)">Ezone</span>
+          </div>
+          <p class="prod-header-brand">Nurus — Türkiye Tasarımı</p>
+          <h1 class="prod-title">Ezone Ergonomik<br>Yönetici Koltuğu</h1>
+          <div class="prod-meta">
+            <div class="prod-rating"><span class="star">★★★★★</span><span class="rating-count">(47 değerlendirme)</span></div>
+            <span class="prod-sku">SKU: NR-EZ-001</span>
+            <span class="stock-badge instock">Stokta Var</span>
+          </div>
+
+          <div class="divider"></div>
+
+          <div class="prod-pricing">
+            <span class="prod-price-main">₺28.500</span>
+            <span class="prod-price-orig">₺34.200</span>
+            <span class="prod-discount">%17 İndirim</span>
+          </div>
+          <p style="font-size:12px;color:var(--gray-500);">KDV Dahil · Ücretsiz Kargo · 0₺ Montaj</p>
+
+          <div class="divider"></div>
+
+          <div>
+            <span class="config-label">Renk: <strong>Siyah Deri</strong></span>
+            <div class="color-swatches">
+              <div class="color-swatch active" style="background:#1a1a1a;" title="Siyah Deri"></div>
+              <div class="color-swatch" style="background:#6b3838;" title="Bordo Deri"></div>
+              <div class="color-swatch" style="background:#c8a97e;" title="Krem Deri"></div>
+              <div class="color-swatch" style="background:#4a5568;" title="Antrasit Kumaş"></div>
+              <div class="color-swatch" style="background:#2c3e6b;" title="Lacivert Kumaş"></div>
+            </div>
+          </div>
+
+          <div>
+            <span class="config-label">Kol Dayama Tipi:</span>
+            <div class="size-options">
+              <button class="size-btn active">4D Kol Dayama</button>
+              <button class="size-btn">2D Kol Dayama</button>
+              <button class="size-btn">Kolsuz</button>
+            </div>
+          </div>
+
+          <div class="divider"></div>
+
+          <div class="qty-row">
+            <div class="qty-control">
+              <button class="qty-btn">−</button>
+              <input type="text" class="qty-input" value="1">
+              <button class="qty-btn">+</button>
+            </div>
+            <button class="add-cart-btn">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+              Sepete Ekle
+            </button>
+          </div>
+
+          <!-- 3D VIEW BUTTON -->
+          <button class="btn-3d">
+            <div class="btn-3d-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 12l10-8 10 8v8l-10 8-10-8v-8z"/><polyline points="2,12 12,20 22,12"/><line x1="12" y1="4" x2="12" y2="20"/></svg>
+            </div>
+            Ürünü Ofisinizde Görün — AR / 3D Görüntüle
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </button>
+
+          <!-- TRUST BADGES -->
+          <div class="trust-items">
+            <div class="trust-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+              <p>İstanbul İçi<br>48 Saat Teslimat</p>
+            </div>
+            <div class="trust-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+              <p>2 Yıl<br>Garanti</p>
+            </div>
+            <div class="trust-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
+              <p>30 Gün<br>İade Hakkı</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- PRODUCT TABS -->
+      <div class="prod-tabs">
+        <div class="tab-nav">
+          <button class="tab-btn active" onclick="switchTab(this,'tab-specs')">Teknik Özellikler</button>
+          <button class="tab-btn" onclick="switchTab(this,'tab-desc')">Ürün Açıklaması</button>
+          <button class="tab-btn" onclick="switchTab(this,'tab-delivery')">Teslimat & İade</button>
+          <button class="tab-btn" onclick="switchTab(this,'tab-reviews')">Değerlendirmeler (47)</button>
+        </div>
+        <div id="tab-specs" class="tab-content active">
+          <table class="spec-table">
+            <tr><td>Ürün Adı</td><td>Nurus Ezone Ergonomik Yönetici Koltuğu</td></tr>
+            <tr><td>Model</td><td>EZ-PRO-BLK-4D</td></tr>
+            <tr><td>Malzeme</td><td>Gerçek Deri / Çelik Krom Taban</td></tr>
+            <tr><td>Renk Seçenekleri</td><td>Siyah, Bordo, Krem, Antrasit, Lacivert</td></tr>
+            <tr><td>Ağırlık Kapasitesi</td><td>150 kg</td></tr>
+            <tr><td>Yükseklik Ayarı</td><td>46 – 56 cm (Piston ile)</td></tr>
+            <tr><td>Sırt Eğim Açısı</td><td>15° – 28° Kilitleme</td></tr>
+            <tr><td>Kol Dayama</td><td>4D (Yükseklik, Genişlik, Derinlik, Açı)</td></tr>
+            <tr><td>Bel Desteği</td><td>Ayarlanabilir Lomber Destek</td></tr>
+            <tr><td>Kafa Desteği</td><td>Yükseklik ve Açı Ayarlı</td></tr>
+            <tr><td>Taban</td><td>Alüminyum Yıldız Taban, 65mm Çift Kilit Tekerlek</td></tr>
+            <tr><td>Boyutlar (GxDxY)</td><td>68 × 72 × 120–130 cm</td></tr>
+            <tr><td>Ürün Ağırlığı</td><td>18.5 kg</td></tr>
+            <tr><td>Garanti</td><td>2 Yıl Üretici Garantisi</td></tr>
+            <tr><td>Sertifikalar</td><td>EN 1335, BIFMA, GREENGUARD</td></tr>
+          </table>
+        </div>
+        <div id="tab-desc" class="tab-content">
+          <p style="font-size:14px;color:var(--gray-700);line-height:1.9;max-width:800px;">Nurus Ezone, Türk tasarım mühendisliğinin zirvesini temsil eder. <strong>Ergonomik ofis koltuğu</strong> kategorisinin en çok tercih edilen modeli olan Ezone, omurga sağlığını destekleyen benzersiz lomber mekanizması ile uzun süreli çalışmalarda maksimum konfor sağlar. Özel formüle edilmiş yüksek yoğunluklu sünger dolgu, günün sonunda bile taze hissetmenizi sağlar.</p>
+          <br>
+          <p style="font-size:14px;color:var(--gray-700);line-height:1.9;max-width:800px;">4D kol dayama sistemi, bileği ve dirseği doğal pozisyonda tutar. Çelik krom yıldız taban, uzun ömürlü kullanım garantisi sunarken modern ofis estetığınızı tamamlar. GREENGUARD sertifikalı malzemeleri ile alerjen ve kimyasal içerik açısından en üst güvenlik standardına sahiptir.</p>
+        </div>
+        <div id="tab-delivery" class="tab-content">
+          <p style="font-size:14px;color:var(--gray-700);line-height:1.9;max-width:700px;">İstanbul içi siparişleriniz 48 saat içinde, Türkiye genelinde 3–5 iş günü içinde teslim edilir. Teslimatta ürünü kontrol edin; hasarlı ürünlerde teslim almayı reddedebilirsiniz. Montaj ücretsizdir ve uzman ekibimiz tarafından gerçekleştirilir. 30 gün içinde iade ve değişim yapabilirsiniz.</p>
+        </div>
+        <div id="tab-reviews" class="tab-content">
+          <div class="review-item">
+            <div class="review-header"><span class="reviewer">Ahmet K.</span><span class="review-date">15 Mart 2024</span></div>
+            <div class="prod-rating" style="margin-bottom:8px;"><span class="star">★★★★★</span></div>
+            <p class="review-text">6 aydır kullanıyorum ve bel ağrım neredeyse tamamen geçti. Montaj ekibi de çok profesyoneldi. Kesinlikle tavsiye ederim.</p>
+          </div>
+          <div class="review-item">
+            <div class="review-header"><span class="reviewer">Zeynep M.</span><span class="review-date">2 Şubat 2024</span></div>
+            <div class="prod-rating" style="margin-bottom:8px;"><span class="star">★★★★★</span></div>
+            <p class="review-text">Ofisimiz için 20 adet aldık. Çalışanlarımızdan çok olumlu geri dönüş alıyoruz. Kalite fiyat dengesi mükemmel.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer style="background:var(--black);color:white;padding:48px 0 0;margin-top:64px;">
+    <div class="container" style="text-align:center;padding-bottom:32px;">
+      <div class="nav-logo" style="font-size:20px;display:inline-block;margin-bottom:16px;">ARCHI-<span style="color:var(--red)">CURATOR</span></div>
+      <p style="color:rgba(255,255,255,0.3);font-size:12px;">© 2024 Archi-Curator. Ofis Mobilyaları | Ergonomik Koltuk | Ofis Masası | İstanbul</p>
+    </div>
+  </footer>
+</div>
+
+<!-- ======= ABOUT PAGE ======= -->
+<div id="page-about" class="page">
+  <div class="about-hero">
+    <div class="about-hero-bg"></div>
+    <div class="container" style="position:relative;">
+      <div style="font-size:10px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--red);margin-bottom:16px;">Archi-Curator Hakkında</div>
+      <h1>Mekânları <strong>Dönüştürüyoruz.</strong></h1>
+      <p style="font-size:15px;color:rgba(255,255,255,0.55);max-width:480px;line-height:1.7;margin-top:20px;">1995'ten bu yana Türkiye'nin kurumsal ofis mobilyası sektöründe liderlik ediyoruz.</p>
+    </div>
+  </div>
+
+  <!-- STORY -->
+  <div class="container">
+    <div class="about-story">
+      <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=700&q=80" alt="Archi-Curator Ofis - Modern Tasarım">
+      <div class="about-story-content">
+        <div class="section-label">Hikayemiz</div>
+        <h2>19 Yıllık<strong>Tutkulu Yolculuk</strong></h2>
+        <p>1995 yılında İstanbul'da kurulan Archi-Curator, bugün Türkiye'nin en köklü kurumsal ofis mobilyası markalarından biri hâline gelmiştir. Kurucularımızın "çalışma alanı insanı şekillendirir" felsefesiyle başlayan yolculuğumuz, 3.000'den fazla kurumsal projeyi hayata geçirmiştir.</p>
+        <p>Nurus yetkili bayi sıfatıyla Türkiye'nin en prestijli yerli ofis mobilya markasının kalitesini doğrudan tüketiciye ulaştırıyoruz. Aynı zamanda Interstuhl, Wilkhahn ve Boss Design gibi uluslararası premium markaların distribütörlüğünü de üstleniyoruz.</p>
+        <p>Masko ve Çağlayan'daki iki büyük showroom'umuzda binlerce ürünü canlı olarak deneyimleyebilir, uzman ekibimizden birebir danışmanlık alabilirsiniz.</p>
+        <a href="#" onclick="showPage('stores')" class="btn-primary" style="height:48px;padding:0 28px;font-size:13px;display:inline-flex;margin-top:8px;">Mağazalarımızı Ziyaret Edin</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- VALUES -->
+  <div class="about-values">
+    <div class="container">
+      <div style="text-align:center;max-width:600px;margin:0 auto;">
+        <div class="section-label" style="justify-content:center;display:flex;">Değerlerimiz</div>
+        <h2 class="section-title" style="text-align:center;margin-top:10px;">İş Yapma<strong>Felsefemiz</strong></h2>
+      </div>
+      <div class="values-grid">
+        <div class="value-card">
+          <div class="value-num">01</div>
+          <h3>Kalite Obsesyonu</h3>
+          <p>Raflarımızdaki her ürün titiz bir seçim sürecinden geçer. Yalnızca uluslararası sertifikalı, test edilmiş ve dayanıklılığı kanıtlanmış mobilyaları sunuyoruz.</p>
+        </div>
+        <div class="value-card">
+          <div class="value-num">02</div>
+          <h3>İnsan Odaklı Tasarım</h3>
+          <p>Ergonomi bilimini tasarım estetiğiyle buluşturuyoruz. Ofislerin sadece güzel değil, çalışan sağlığını ve üretkenliğini artırır nitelikte olması için çalışıyoruz.</p>
+        </div>
+        <div class="value-card">
+          <div class="value-num">03</div>
+          <h3>Sürdürülebilirlik</h3>
+          <p>Çevre dostu malzeme seçimi, uzun ömürlü ürünler ve minimum atık prensibiyle gelecek nesillere daha yaşanabilir bir dünya bırakma sorumluluğunu taşıyoruz.</p>
+        </div>
+        <div class="value-card">
+          <div class="value-num">04</div>
+          <h3>Satış Sonrası Destek</h3>
+          <p>Ürünü aldıktan sonra gerçek ilişki başlar. Uzman ekibimiz montajdan periyodik bakıma kadar her aşamada yanınızdadır.</p>
+        </div>
+        <div class="value-card">
+          <div class="value-num">05</div>
+          <h3>Kurumsal Çözümler</h3>
+          <p>Startup'tan Fortune 500 şirketine, küçük ofisten büyük holding binasına kadar ölçeklenebilir ofis mobilyası çözümleri sunuyoruz.</p>
+        </div>
+        <div class="value-card">
+          <div class="value-num">06</div>
+          <h3>Şeffaf Fiyatlama</h3>
+          <p>Gizli masraf yok. Gösterilen fiyat, montaj ve kargo dahil nihai fiyattır. Kurumsal müşterilerimize özel fiyatlandırma imkânları sunuyoruz.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- STATS -->
+  <section class="stats-section">
+    <div class="container">
+      <div class="stats-grid">
+        <div class="stat-item visible"><div class="stat-num">19<span>+</span></div><div class="stat-label">Yıllık Deneyim</div></div>
+        <div class="stat-item visible" style="transition-delay:0.15s"><div class="stat-num">3<span>K+</span></div><div class="stat-label">Kurumsal Proje</div></div>
+        <div class="stat-item visible" style="transition-delay:0.3s"><div class="stat-num">2</div><div class="stat-label">Showroom</div></div>
+        <div class="stat-item visible" style="transition-delay:0.45s"><div class="stat-num">#<span style="color:var(--red)">1</span></div><div class="stat-label">Nurus Yetkili Bayi</div></div>
+      </div>
+    </div>
+  </section>
+
+  <footer style="background:var(--black);color:white;padding:48px 0 0;">
+    <div class="container" style="text-align:center;padding-bottom:32px;">
+      <div class="nav-logo" style="font-size:20px;display:inline-block;margin-bottom:16px;">ARCHI-<span style="color:var(--red)">CURATOR</span></div>
+      <p style="color:rgba(255,255,255,0.3);font-size:12px;">© 2024 Archi-Curator. Ofis Mobilyaları | Ergonomik Koltuk | Ofis Masası | İstanbul</p>
+    </div>
+  </footer>
+</div>
+
+<!-- ======= STORES/CONTACT PAGE ======= -->
+<div id="page-stores" class="page">
+  <div class="stores-page">
+    <div class="stores-hero">
+      <div class="container">
+        <div style="font-size:10px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--red);margin-bottom:14px;">Mağazalarımız</div>
+        <h1>İki <strong>Showroom,</strong><br>Sonsuz İlham.</h1>
+        <p style="font-size:14px;color:rgba(255,255,255,0.45);max-width:480px;margin-top:16px;line-height:1.7;">İstanbul'un iki stratejik noktasında, 1.200 m²'nin üzerinde sergi alanımızda yüzlerce ürünü canlı olarak deneyimleyin.</p>
+      </div>
+    </div>
+
+    <div class="container" style="padding-top:0;">
+      <div class="stores-layout">
+        <!-- MASKO -->
+        <div class="store-card">
+          <div class="store-num">01</div>
+          <h2>Masko Showroom</h2>
+          <p class="store-district">Masko Ofis Mobilya Kenti · İkitelli</p>
+          <div class="map-placeholder" style="margin-bottom:24px;">
+            <div style="text-align:center;">
+              <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#888" stroke-width="1.5" style="margin-bottom:8px;display:block;margin:0 auto 8px;"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              <p style="font-size:13px;color:#888;">Masko, Yılmaz Plaza<br>No: 42, Bağcılar / İstanbul</p>
+            </div>
+          </div>
+          <div class="store-info">
+            <div class="store-info-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Masko Ofis Mobilya Kenti, No: 42, Bağcılar, İstanbul 34210</div>
+            <div class="store-info-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>+90 212 440 0 440</div>
+            <div class="store-info-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>masko@archicurator.com</div>
+          </div>
+          <div class="store-hours">
+            <h5>Çalışma Saatleri</h5>
+            <div class="store-hours-row"><span>Pazartesi – Cumartesi</span><strong>09:00 – 19:00</strong></div>
+            <div class="store-hours-row"><span>Pazar</span><strong>10:00 – 17:00</strong></div>
+          </div>
+          <a href="#" class="btn-primary" style="height:44px;padding:0 24px;font-size:12px;">Yol Tarifi Al</a>
+        </div>
+
+        <!-- ÇAĞLAYAN -->
+        <div class="store-card">
+          <div class="store-num">02</div>
+          <h2>Çağlayan Showroom</h2>
+          <p class="store-district">Çağlayan Ofis Merkezi · Kâğıthane</p>
+          <div class="map-placeholder" style="margin-bottom:24px;">
+            <div style="text-align:center;">
+              <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#888" stroke-width="1.5" style="margin-bottom:8px;display:block;margin:0 auto 8px;"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              <p style="font-size:13px;color:#888;">Çağlayan Ofis Merkezi<br>No: 18, Kâğıthane / İstanbul</p>
+            </div>
+          </div>
+          <div class="store-info">
+            <div class="store-info-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Çağlayan Ofis Merkezi, No: 18, Kâğıthane, İstanbul 34410</div>
+            <div class="store-info-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>+90 212 220 0 220</div>
+            <div class="store-info-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>caglayan@archicurator.com</div>
+          </div>
+          <div class="store-hours">
+            <h5>Çalışma Saatleri</h5>
+            <div class="store-hours-row"><span>Pazartesi – Cumartesi</span><strong>09:00 – 19:00</strong></div>
+            <div class="store-hours-row"><span>Pazar</span><strong>10:00 – 17:00</strong></div>
+          </div>
+          <a href="#" class="btn-primary" style="height:44px;padding:0 24px;font-size:12px;">Yol Tarifi Al</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- CONTACT FORM -->
+    <div class="contact-form-section" style="background:var(--gray-100);">
+      <div class="container">
+        <div class="contact-grid">
+          <div>
+            <div class="section-label">Bize Ulaşın</div>
+            <h2 class="section-title" style="margin-bottom:20px;">Ofis Projeniz<strong>Hakkında Konuşalım</strong></h2>
+            <p style="font-size:14px;color:var(--gray-700);line-height:1.8;margin-bottom:32px;">Kurumsal mobilya çözümleri, proje danışmanlığı veya showroom randevusu için bizimle iletişime geçin. Uzman ekibimiz en kısa sürede size dönecektir.</p>
+            <div style="display:flex;flex-direction:column;gap:20px;">
+              <div style="display:flex;gap:14px;align-items:flex-start;">
+                <div style="width:44px;height:44px;background:var(--red);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                </div>
+                <div><p style="font-size:13px;font-weight:600;margin-bottom:3px;">Genel Merkez</p><p style="font-size:13px;color:var(--gray-700);">+90 212 440 0 440</p></div>
+              </div>
+              <div style="display:flex;gap:14px;align-items:flex-start;">
+                <div style="width:44px;height:44px;background:var(--red);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                </div>
+                <div><p style="font-size:13px;font-weight:600;margin-bottom:3px;">E-posta</p><p style="font-size:13px;color:var(--gray-700);">info@archicurator.com</p></div>
+              </div>
+            </div>
+          </div>
+          <div style="background:white;padding:40px;box-shadow:var(--shadow-sm);">
+            <h3 style="font-size:20px;font-weight:700;margin-bottom:24px;">Mesaj Gönderin</h3>
+            <div class="form-grid-2">
+              <div class="form-group"><label class="form-label">Ad Soyad</label><input type="text" class="form-input" placeholder="Ad Soyadınız"></div>
+              <div class="form-group"><label class="form-label">Şirket</label><input type="text" class="form-input" placeholder="Şirket Adı"></div>
+            </div>
+            <div class="form-grid-2">
+              <div class="form-group"><label class="form-label">E-posta</label><input type="email" class="form-input" placeholder="mail@ornek.com"></div>
+              <div class="form-group"><label class="form-label">Telefon</label><input type="tel" class="form-input" placeholder="+90 5__ ___ ____"></div>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Konu</label>
+              <select class="form-input" style="appearance:none;cursor:pointer;">
+                <option>Kurumsal Proje Talebi</option>
+                <option>Ürün Bilgisi</option>
+                <option>Showroom Randevusu</option>
+                <option>Garanti & Servis</option>
+                <option>Diğer</option>
+              </select>
+            </div>
+            <div class="form-group"><label class="form-label">Mesajınız</label><textarea class="form-input form-textarea" placeholder="Projenizi ve ihtiyaçlarınızı kısaca anlatın..."></textarea></div>
+            <button class="btn-primary" style="width:100%;height:52px;font-size:13px;justify-content:center;">
+              Mesajı Gönder
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 2L11 13M22 2L15 22l-4-9-9-4 20-7z"/></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CTA -->
+    <div class="stores-cta">
+      <div class="container">
+        <h2>Showroom Randevusu Alın</h2>
+        <p>Uzman danışmanlarımız sizin için özel bir sunum hazırlasın. Ürünleri bizzat görün, test edin.</p>
+        <a href="tel:+902124400440" style="background:white;color:var(--red);padding:0 32px;height:52px;display:inline-flex;align-items:center;font-size:13px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;text-decoration:none;gap:8px;border-radius:2px;">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          Hemen Ara: +90 212 440 0 440
+        </a>
+      </div>
+    </div>
+
+    <footer style="background:var(--black);color:white;padding:48px 0 0;">
+      <div class="container" style="text-align:center;padding-bottom:32px;">
+        <div class="nav-logo" style="font-size:20px;display:inline-block;margin-bottom:16px;">ARCHI-<span style="color:var(--red)">CURATOR</span></div>
+        <p style="color:rgba(255,255,255,0.3);font-size:12px;">© 2024 Archi-Curator. Ofis Mobilyaları | Ergonomik Koltuk | Ofis Masası | İstanbul</p>
+      </div>
+    </footer>
+  </div>
+</div>
+
+<script>
+  // PAGE NAVIGATION
+  function showPage(page) {
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+    document.getElementById('page-' + page).classList.add('active');
+    window.scrollTo(0, 0);
+  }
+
+  // NAVBAR SCROLL
+  window.addEventListener('scroll', () => {
+    document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 40);
+  });
+
+  // STATS COUNTER ANIMATION
+  const observerOptions = { threshold: 0.3 };
+  const statsObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.querySelectorAll('.stat-item').forEach((item, i) => {
+          setTimeout(() => item.classList.add('visible'), i * 150);
+        });
+        entry.target.querySelectorAll('.counter').forEach(counter => {
+          const target = parseInt(counter.dataset.target);
+          let current = 0;
+          const step = target / 40;
+          const timer = setInterval(() => {
+            current = Math.min(current + step, target);
+            counter.textContent = Math.floor(current);
+            if (current >= target) clearInterval(timer);
+          }, 40);
+        });
+        statsObserver.unobserve(entry.target);
+      }
+    });
+  }, observerOptions);
+
+  const statsSection = document.getElementById('stats');
+  if (statsSection) statsObserver.observe(statsSection);
+
+  // SCROLL REVEAL for sections
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.style.opacity = '1';
+        entry.target.style.transform = 'translateY(0)';
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.cat-card, .usp-item, .value-card').forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(20px)';
+    el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+    revealObserver.observe(el);
+  });
+
+  // TAB SWITCHING
+  function switchTab(btn, tabId) {
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById(tabId).classList.add('active');
+  }
+
+  // THUMB CLICK
+  document.querySelectorAll('.thumb').forEach(thumb => {
+    thumb.addEventListener('click', () => {
+      document.querySelectorAll('.thumb').forEach(t => t.classList.remove('active'));
+      thumb.classList.add('active');
+      const img = thumb.querySelector('img');
+      if (img) document.getElementById('mainImg').src = img.src.replace('w=200', 'w=800');
+    });
+  });
+
+  // SIZE BTN TOGGLE
+  document.querySelectorAll('.size-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      btn.closest('.size-options').querySelectorAll('.size-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+    });
+  });
+
+  // QTY CONTROL
+  document.querySelectorAll('.qty-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const input = btn.parentElement.querySelector('.qty-input');
+      let val = parseInt(input.value) || 1;
+      if (btn.textContent === '+') val = Math.min(val + 1, 99);
+      else val = Math.max(val - 1, 1);
+      input.value = val;
+    });
+  });
+
+  // COLOR SWATCH
+  document.querySelectorAll('.color-swatch').forEach(sw => {
+    sw.addEventListener('click', () => {
+      sw.closest('.color-swatches').querySelectorAll('.color-swatch').forEach(s => s.classList.remove('active'));
+      sw.classList.add('active');
+    });
+  });
+</script>
+</body>
+</html>
